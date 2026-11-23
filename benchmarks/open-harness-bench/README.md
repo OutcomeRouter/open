@@ -1,98 +1,95 @@
 # Open Harness Bench
 
-An open benchmark from [OutcomeRouter](https://outcomerouter.ai).
+How do you tell whether a coding agent solved a task or just learned the examples? Give two workers the same FizzBuzz task. Both pass the examples in the prompt. Only one handles the larger inputs that the scorer tests afterward.
 
-Tasks, checks and an [Inspect](https://inspect.aisi.org.uk/) eval for agent work that is paid only when it passes. It is the evaluation harness behind OutcomeRouter: the same task format, the same checks and the same rule that every check runs on every result, withheld ones included. Routing, pricing and accounts are not part of this repository.
+This public [OutcomeRouter](https://outcomerouter.ai) benchmark includes the task, both workers, the scorer, and 539 more tasks. The two demo workers are scripts, so anyone can reproduce the difference without a model account.
 
-Early: one recorded run so far (below). We will publish more as the [free beta](https://outcomerouter.ai/glossary/#free-beta) runs.
+## What did the selection step contribute?
 
-## Why
+Across **90 synthetic tasks**, choosing the first proposal that passed the visible examples produced **46 passes**. Giving the selector one extra test produced **89 passes** on the same final checks. The extra test recovered 43 tasks. One ledger task still failed because its extra test asked about an empty ledger, a case both proposals already handled.
 
-An agent's result depends on its whole harness: the task text, the starting files, the tools, the sandbox and the checks. Benchmarks rarely define those layers one by one, and almost never seal them, so two scores that look comparable often were not run the same way. Open Harness Bench defines each layer separately and pins it:
-
-| Layer | What it fixes | Core cases, each with a test in [`tests/test_core_cases.py`](tests/test_core_cases.py) |
-| --- | --- | --- |
-| Task | the task text and starting files, in a spec pinned by its digest | **The starting files alone never pass.** Editing the spec changes its digest. |
-| Checks | the commands that decide a pass, kept outside the worker's folder | **Passing every visible check is not enough: the withheld check decides.** The first failed check stops the run. |
-| Sandbox | a fresh copy of the starting files | **A worker that rewrites the tests still fails, because protected files are restored before checks run.** |
-| Worker | the agent command and its setup, recorded with every result | **The prompt shows visible checks and never a withheld one.** |
-| Verdict | pass or fail, with each check's output kept | **Pass only when every check passes.** |
-
-Today the eval runs in Inspect's local sandbox. Sealing each layer in a hermetic container with no network is next; specs can already ask for `sandbox = "docker"`.
-
-The worker is layered too. Next, each worker layer ships as an OCI artifact with its own digest, stacked into one manifest: base model (open weights or a pinned API model id), LoRA adapter, harness (agent runtime and version), prompts, skills, and tools (MCP servers and config). The task and its checks ship as a separate artifact that never enters the worker's image. A verdict records both digests, so swapping one adapter or one skill shows exactly what changed.
-
-## Quick start
+Each task had two scripted proposals in a fixed, shuffled order. One implemented the generated reference. The other memorized the three examples. Both arms saw the same proposals. Only the second arm could use one separately seeded input and its known answer before choosing. The final check used 400 generated inputs per task. This experiment isolates selection when a correct proposal is available and a trusted source can supply an expected answer. It does not estimate performance on production work or measure model reasoning.
 
 ```sh
-python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
-# the core cases, layer by layer (demo agents: good, lazy, cheat)
-.venv/bin/python tests/test_core_cases.py
-# one task, one agent
-.venv/bin/inspect eval orbench_eval.py@outcome -T spec=examples/fizzbuzz/spec.toml -T agent=demo-good --model mockllm/model
-# a whole folder of tasks as one eval
-.venv/bin/inspect eval orbench_eval.py@suite -T tasks=tasks/humaneval -T agent=demo-good --model mockllm/model
-.venv/bin/inspect view
+# From benchmarks/open-harness-bench, Python 3.11+; no dependencies or API keys.
+python3 tools/selection_ablation.py --out /tmp/selection-ablation.json
+diff results/selection-ablation.json /tmp/selection-ablation.json
 ```
 
-Agents are shell commands in `~/.orbench/agents.toml`, written on first run with three demo agents and commented examples for Claude Code, Codex and Aider. Inspect does not call a model itself (`mockllm/model`): the agent runs as the solver inside the sandbox, and the task's checks are the scorer.
+Inspect [every paired outcome](results/selection-ablation.json), the [one missed case](tasks/synthetic-ledger/ledger-d5-15), or the [experiment code](tools/selection_ablation.py).
 
-## Terms
+## Run the comparison
 
-The same words as the [OutcomeRouter glossary](https://outcomerouter.ai/glossary/).
+Use Python 3.11 or newer, Bash, and Git on macOS or Linux.
 
-| Term | Here | Inspect |
-| --- | --- | --- |
-| [Spec](https://outcomerouter.ai/glossary/#spec) | `spec.toml`: the task text, starting files and checks | Sample |
-| [Check](https://outcomerouter.ai/glossary/#check-strength) | a command that exits 0 on pass, with a level: proved, verified, tested, judged or human | Scorer |
-| [Withheld check](https://outcomerouter.ai/glossary/#withheld-check) | `withheld = true`: the agent never sees it; it still counts | |
-| [Milestone check](https://outcomerouter.ai/glossary/#milestone-check) | a check that stops an attempt early when it fails | |
-| [Worker](https://outcomerouter.ai/glossary/#worker) | an agent command, a person, or a team with shares | Solver |
-| [Sandbox](https://outcomerouter.ai/glossary/#sandbox) | a fresh copy of the starting files; protected files are restored before checks run | Sandbox |
-| [Attempt](https://outcomerouter.ai/glossary/#attempt) | one worker's try at one task | one sample run |
-| [Verdict](https://outcomerouter.ai/glossary/#verdict) | pass only if every check passes; per-check results and output are kept | Score (`metadata.verdict`) |
-| [Track record](https://outcomerouter.ai/glossary/#track-record) | verdicts collected across tasks | eval logs |
-| Seed | a real task with a check (here: public benchmark tasks) | |
-| Variant | a task made by changing a seed or a generator recipe | |
-| Family | all variants made the same way (`tasks/synthetic-<family>`) | |
+```sh
+git clone https://github.com/OutcomeRouter/open.git
+cd open/benchmarks/open-harness-bench
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install -r requirements.txt
+export ORBENCH_HOME="$(mktemp -d)"
+for agent in demo-good demo-lazy; do
+  inspect eval orbench_eval.py@outcome -T spec=examples/fizzbuzz/spec.toml \
+    -T agent="$agent" --model mockllm/model --log-dir "$ORBENCH_HOME/logs"
+done
+inspect view --log-dir "$ORBENCH_HOME/logs"
+```
 
-## Tasks
-
-539 tasks, each validated before it was kept.
-
-| Folder | Tasks | Source | How it was refined |
+| Worker | Visible checks | Withheld check on larger inputs | Verdict |
 | --- | --- | --- | --- |
-| `tasks/humaneval` | 164 | HumanEval via Inspect Evals | kept only if the starting files fail and the reference solution passes |
-| `tasks/mbpp` | 200 | MBPP via Inspect Evals, random sample | same validation |
-| `tasks/class_eval` | 85 | ClassEval via Inspect Evals, random sample | same validation; 15 of 100 sampled failed it and were dropped |
-| `tasks/synthetic-*` | 90 | `tools/gen_tasks.py` (ledger, records, text) | 30 per family; rules composed to a known number of steps; checked against a reference on 400 random inputs |
+| demo-good | Pass | Pass | Pass |
+| demo-lazy | Pass | Fail | Fail |
 
-Each imported task keeps the eval's own tests as a withheld check outside the agent's folder, and adds a visible check from the docstring examples where they are well formed. Rebuild or extend:
+Open either sample in Inspect to see the check names, output, and verdict. Follow the same result through the [task definition](examples/fizzbuzz/spec.toml), [workers](demo_agents), and [scorer](orbench_eval.py). To run the regression tests, use `python -m unittest discover -s tests -v`.
 
-```sh
-.venv/bin/pip install inspect-evals
-.venv/bin/python tools/import_inspect.py mbpp --sample 200 --seed 1 --out tasks/mbpp
-.venv/bin/python tools/gen_tasks.py --family ledger --n 30 --seed 1 --out tasks/synthetic-ledger
+## What a pass means
+
+The solver runs a configured shell command in a fresh copy of the starting files. The worker prompt includes the visible checks. Before scoring, the harness restores the original files named in `protect`. The scorer runs checks in order and stops at the first failure. A pass requires every check to succeed.
+
+The local runner executes with the user's permissions. Use trusted workers and task commands. Withheld checks are omitted from the prompt but remain readable in this public checkout. A spec digest identifies the contents of `spec.toml`. Record the Git commit as well to identify the versions of the fixtures and scorer.
+
+## Compare agent setups
+
+The first run creates `$ORBENCH_HOME/agents.toml` with demo commands and examples for adding a coding agent. Change the worker while keeping the task set, checks, and attempt budget fixed. To run a folder of tasks, use `orbench_eval.py@suite` and pass `-T tasks=tasks/humaneval` in place of the single spec argument.
+
+Report passed attempts and total attempts together. For cost per passing result, divide **total measured spend across all attempts** by the number of passes. With zero passes, report the spend and zero passes. The local scorer records verdicts and check output. Collect actual spend from the worker or provider separately. A configured price is an estimate.
+
+### Compare a single worker with a team
+
+A stronger judge, more model calls, and better handoffs can each change the result. To test handoffs, give the same workers the same task and call budget. Change only how they share findings. Keep the scorer outside the team. For a learning router, freeze the routing rule before the evaluation split and include failed attempts in the cost.
+
+The RSI Bench swarm task illustrates this design. It fixes the underlying model and evaluates a frozen graph on hidden problems. The verifier accounts for calls. Replit’s optimization study varied team size and found that some teams lost performance as they grew. [RSI Bench task](https://rsi-benchmark.com/tasks/agent-swarm-optimization) · [Replit experiment](https://frontier.replit.com/throwing-headcount-at-the-problem/)
+
+Record each worker’s setup in its `agents.toml` entry. The labels identify the setup you claim to have run. Keep the command, actual call trace, and billed usage with your results.
+
+```toml
+[agents.layers]
+model = "your-model-revision"
+coordination = "shared-board"
+reviewer = "same-model"
+budget = "four calls per task"
 ```
 
-Public tasks may be in models' training data, so treat scores on them as priors, not proof. Fresh tasks from real work are what the record is built on.
+Compare the logs from the walkthrough with the incomplete worker on the left:
 
-## Results so far
+```sh
+python tools/compare.py "$ORBENCH_HOME"/logs/*demo-lazy*.eval "$ORBENCH_HOME"/logs/*demo-good*.eval
+```
 
-One run, 14 tasks (MBPP and ClassEval), one attempt each:
+The report shows which tasks changed verdict in each direction. It rejects mismatched task sets, epochs, fixture contents, runner versions, and per-attempt time limits. The fixture hash covers the spec, starting files, and files under `checks/`. External tools, API revisions, and actual usage need separate records. The local runner cannot enforce an external agent’s model-call budget.
 
-| Agent | Pass rate | Cost per passing result |
-| --- | --- | --- |
-| claude-sonnet | 100% (14/14) | $0.60 |
-| claude-haiku | 93% (13/14) | $0.22 |
+## Task corpus
 
-Small sample. Under review for data quality.
+| Collection | Tasks | Source |
+| --- | ---: | --- |
+| [HumanEval](tasks/humaneval) | 164 | HumanEval via Inspect Evals |
+| [MBPP](tasks/mbpp) | 200 | Sample from MBPP via Inspect Evals |
+| [ClassEval](tasks/class_eval) | 85 | Tasks retained from a sample of 100 |
+| Synthetic | 90 | 30 each from the ledger, records, and text generators |
 
-## Other checks
+Run `python3 tools/audit_corpus.py` to check the corpus locally. The audit runs the starting files for every task. It also regenerates reference solutions for all 90 synthetic tasks. The imported tasks have no local reference in this checkout.
 
-- `tools/verify.py`: an [independent verifier](https://outcomerouter.ai/glossary/#independent-verifier) over A2A or HTTP, returning `{"pass": bool, "evidence": str}`.
-- `tools/judge.py`: a judged check, a model scoring files against a rubric. Use a model from a different family than the worker.
+The [importer](tools/import_inspect.py) checks that the starting files fail and the reference solution passes. The [generator](tools/gen_tasks.py) builds synthetic tasks from a seed. Public tasks can occur in training data. Use fresh held-out tasks to test whether a result carries over to your workload.
 
-## License
-
-Code: Apache-2.0. Tasks derived from public datasets keep their licenses; see [NOTICE](NOTICE).
+Code uses Apache-2.0. See [NOTICE](NOTICE) for dataset licenses.

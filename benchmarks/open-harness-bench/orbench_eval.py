@@ -2,8 +2,7 @@
 
 Each attempt is one Inspect eval: the task's workdir is copied into an Inspect
 sandbox, the agent runs there as a solver (no model calls from Inspect), and the
-spec's checks are the scorer. Logs land in ~/.orbench/inspect-logs, so
-`inspect view --log-dir ~/.orbench/inspect-logs` shows every attempt.
+spec's checks are the scorer. Use --log-dir to keep the logs for a comparison together.
 
 You can also run it directly:
 
@@ -13,7 +12,7 @@ You can also run it directly:
 
 from __future__ import annotations
 
-import os
+import shlex
 import shutil
 from pathlib import Path
 
@@ -24,6 +23,12 @@ from inspect_ai.solver import Generate, TaskState, solver
 from inspect_ai.util import sandbox
 
 import orbench.core as orc
+from orbench.provenance import experiment_metadata
+
+
+def _require_local(spec: orc.Spec) -> None:
+    if spec.sandbox != "local":
+        raise ValueError(f"{spec.path}: this runner supports only the local sandbox")
 
 
 def _files(workdir: Path) -> dict[str, str]:
@@ -55,7 +60,7 @@ def shell_agent(agent: orc.Agent, spec: orc.Spec | None, tier: str):
             prompt_file=f"{here}/.orbench/PROMPT.md", workdir=here, demo=orc.REPO / "demo_agents", repo=orc.REPO, mcp_config=f"{here}/.orbench/mcp.json"
         )
         if tier == "wait-and-save":
-            cmd = f"nice -n 10 bash -c {cmd!r}"
+            cmd = f"nice -n 10 bash -c {shlex.quote(cmd)}"
         res = await sb.exec(["bash", "-c", cmd], timeout=int(spec_.timeout_min * 60),
                             env={"ORBENCH_IN_AGENT": "1"})
         state.metadata["agent_exit"] = res.returncode
@@ -76,7 +81,7 @@ def spec_checks(spec: orc.Spec | None, deliver_to: str | None):
             for f in files:
                 await sb.write_file(str(f.relative_to(spec_.workdir)), f.read_bytes())
         results = []
-        for c in spec_.checks:  # the harness runs every check, withheld ones too
+        for c in spec_.checks:  # stop at the first failed check
             r = await sb.exec(["bash", "-c", orc.expand(c.cmd, spec_)], timeout=c.timeout_s)
             results.append({
                 "name": c.name, "level": c.level, "withheld": c.withheld,
@@ -100,13 +105,14 @@ def spec_checks(spec: orc.Spec | None, deliver_to: str | None):
 
 
 def build_task(spec: orc.Spec, agent: orc.Agent, tier: str = "standard", deliver_to: str | None = None) -> Task:
+    _require_local(spec)
     return Task(
         name=f"outcome-{agent.name}",
         dataset=[Sample(id=spec.digest, input=orc.prompt_for(spec), files=_files(spec.workdir),
-                        metadata={"task_type": spec.type, "agent": agent.name, "tier": tier})],
+                        metadata=experiment_metadata(spec, agent, tier))],
         solver=shell_agent(agent, spec, tier),
         scorer=spec_checks(spec, deliver_to),
-        sandbox="local",
+        sandbox=spec.sandbox,
     )
 
 
@@ -125,8 +131,9 @@ def suite(tasks: str, agent: str, tier: str = "standard") -> Task:
     samples = []
     for p in paths:
         s = orc.load_spec(str(p))
-        samples.append(Sample(id=p.parent.name, input=orc.prompt_for(s), files=_files(s.workdir),
-                              metadata={"spec": str(p), "task_type": s.type, "agent": ag.name, "tier": tier}))
+        _require_local(s)
+        samples.append(Sample(id=p.parent.relative_to(Path(tasks).resolve()).as_posix(), input=orc.prompt_for(s), files=_files(s.workdir),
+                              metadata={"spec": str(p), **experiment_metadata(s, ag, tier)}))
     return Task(name=f"suite-{Path(tasks).name}-{ag.name}", dataset=samples,
                 solver=shell_agent(ag, None, tier), scorer=spec_checks(None, None), sandbox="local")
 
