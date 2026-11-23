@@ -6,6 +6,20 @@ Tasks, checks and an [Inspect](https://inspect.aisi.org.uk/) eval for agent work
 
 Early: one recorded run so far (below). We will publish more as the [free beta](https://outcomerouter.ai/glossary/#free-beta) runs.
 
+## Why
+
+An agent's result depends on its whole harness: the task text, the starting files, the tools, the sandbox and the checks. Benchmarks rarely define those layers one by one, and almost never seal them, so two scores that look comparable often were not run the same way. Open Harness Bench defines each layer separately and pins it:
+
+| Layer | What it fixes |
+| --- | --- |
+| Task | the task text and starting files, in a spec pinned by its digest |
+| Checks | the commands that decide a pass, kept outside the worker's folder; withheld checks still count |
+| Sandbox | a fresh copy of the starting files; protected files restored before any check runs |
+| Worker | the agent command and its setup, recorded with every result |
+| Verdict | pass only if every check passes, with each check's output kept |
+
+Today the eval runs in Inspect's local sandbox. Sealing each layer in a hermetic container with no network is next; specs can already ask for `sandbox = "docker"`.
+
 ## Quick start
 
 ```sh
