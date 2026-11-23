@@ -33,6 +33,7 @@ for agent in demo-good demo-lazy; do
   inspect eval orbench_eval.py@outcome -T spec=examples/fizzbuzz/spec.toml \
     -T agent="$agent" --model mockllm/model --log-dir "$ORBENCH_HOME/logs"
 done
+python tools/compare.py "$ORBENCH_HOME"/logs/*demo-lazy*.eval "$ORBENCH_HOME"/logs/*demo-good*.eval
 inspect view --log-dir "$ORBENCH_HOME/logs"
 ```
 
@@ -51,15 +52,20 @@ The local runner executes with the user's permissions. Use trusted workers and t
 
 ## Compare agent setups
 
-The first run creates `$ORBENCH_HOME/agents.toml` with demo commands and examples for adding a coding agent. Change the worker while keeping the task set, checks, and attempt budget fixed. To run a folder of tasks, use `orbench_eval.py@suite` and pass `-T tasks=tasks/humaneval` in place of the single spec argument.
+The first run creates `$ORBENCH_HOME/agents.toml` with demo commands and examples for adding a coding agent. Change the worker while keeping the task set, checks, and attempt budget fixed. After adding a coding worker named `my-worker`, this command runs two attempts per task. Use the same `--epochs` in both arms. The default is one attempt per task.
 
-Report passed attempts and total attempts together. For cost per passing result, divide **total measured spend across all attempts** by the number of passes. With zero passes, report the spend and zero passes. The local scorer records verdicts and check output. Collect actual spend from the worker or provider separately. A configured price is an estimate.
+```sh
+inspect eval orbench_eval.py@suite -T tasks=tasks/humaneval -T agent=my-worker \
+  --epochs 2 --model mockllm/model --log-dir "$ORBENCH_HOME/suite-logs"
+```
+
+Report passed attempts and total attempts together. For cost per passing result, divide **total measured spend across all attempts** by the number of passes. With zero passes, report the spend and zero passes. The local scorer records verdicts and check output. Record timeouts and unscored attempts separately and include their spend. Collect actual spend from the worker or provider. A configured price is an estimate.
 
 ### Compare a single worker with a team
 
 A stronger judge, more model calls, and better handoffs can each change the result. To test handoffs, give the same workers the same task and call budget. Change only how they share findings. Keep the scorer outside the team. For a learning router, freeze the routing rule before the evaluation split and include failed attempts in the cost.
 
-The RSI Bench swarm task illustrates this design. It fixes the underlying model and evaluates a frozen graph on hidden problems. The verifier accounts for calls. Replit’s optimization study varied team size and found that some teams lost performance as they grew. [RSI Bench task](https://rsi-benchmark.com/tasks/agent-swarm-optimization) · [Replit experiment](https://frontier.replit.com/throwing-headcount-at-the-problem/)
+RSI Bench fixes the underlying model and evaluates a frozen graph on hidden problems. Its teams can change roles, prompts, and routing together. Its verifier accounts for calls. Replit’s optimization study varied team size and found that some teams lost performance as they grew. [RSI Bench task](https://rsi-benchmark.com/tasks/agent-swarm-optimization) · [Replit experiment](https://frontier.replit.com/throwing-headcount-at-the-problem/)
 
 Record each worker’s setup in its `agents.toml` entry. The labels identify the setup you claim to have run. Keep the command, actual call trace, and billed usage with your results.
 
@@ -69,12 +75,6 @@ model = "your-model-revision"
 coordination = "shared-board"
 reviewer = "same-model"
 budget = "four calls per task"
-```
-
-Compare the logs from the walkthrough with the incomplete worker on the left:
-
-```sh
-python tools/compare.py "$ORBENCH_HOME"/logs/*demo-lazy*.eval "$ORBENCH_HOME"/logs/*demo-good*.eval
 ```
 
 The report shows which tasks changed verdict in each direction. It rejects mismatched task sets, epochs, fixture contents, runner versions, and per-attempt time limits. The fixture hash covers the spec, starting files, and files under `checks/`. External tools, API revisions, and actual usage need separate records. The local runner cannot enforce an external agent’s model-call budget.

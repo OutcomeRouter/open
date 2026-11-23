@@ -7,6 +7,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import shlex
 import sys
 import tomllib
 from dataclasses import dataclass, field
@@ -26,17 +27,17 @@ DEFAULT_CONFIG = f'''# Benchmark agents. Each agent is a shell command run insid
 
 [[agents]]
 name = "demo-good"
-cmd = "python3 {{demo}}/good.py {{prompt_file}}"
+cmd = 'python3 "{{demo}}/good.py" "{{prompt_file}}"'
 price_usd = 0.40
 
 [[agents]]
 name = "demo-flaky"
-cmd = "python3 {{demo}}/flaky.py {{prompt_file}}"
+cmd = 'python3 "{{demo}}/flaky.py" "{{prompt_file}}"'
 price_usd = 0.15
 
 [[agents]]
 name = "demo-lazy"
-cmd = "python3 {{demo}}/lazy.py {{prompt_file}}"
+cmd = 'python3 "{{demo}}/lazy.py" "{{prompt_file}}"'
 price_usd = 0.05
 
 # Real agents: uncomment and set a price (what one attempt costs you, pass or fail).
@@ -251,6 +252,6 @@ def prompt_for(spec: Spec, stage: str = "") -> str:
 
 def expand(cmd: str, spec: Spec, spec_dir: str | None = None) -> str:
     """Fill {spec_dir}: the folder holding spec.toml, where withheld check files live outside the workdir."""
-    return cmd.replace("{spec_dir}", spec_dir or str(spec.path.parent))
+    return cmd.replace("{spec_dir}", shlex.quote(spec_dir or str(spec.path.parent)))
 
 
