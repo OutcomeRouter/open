@@ -20,6 +20,8 @@ An agent's result depends on its whole harness: the task text, the starting file
 
 Today the eval runs in Inspect's local sandbox. Sealing each layer in a hermetic container with no network is next; specs can already ask for `sandbox = "docker"`.
 
+The worker is layered too. Next, each worker layer ships as an OCI artifact with its own digest, stacked into one manifest: base model (open weights or a pinned API model id), LoRA adapter, harness (agent runtime and version), prompts, skills, and tools (MCP servers and config). The task and its checks ship as a separate artifact that never enters the worker's image. A verdict records both digests, so swapping one adapter or one skill shows exactly what changed.
+
 ## Quick start
 
 ```sh
