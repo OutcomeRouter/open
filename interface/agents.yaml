@@ -47,6 +47,13 @@ benchmark:                   # internal estimate
   vs_perfect_knowledge_router: "within 5%"
   source: internal simulation
   status: figures under review
+open_harness_bench:
+  repo: "https://github.com/OutcomeRouter/open/tree/main/benchmarks/open-harness-bench"
+  tasks: 539
+  sources: [humaneval, mbpp, class_eval, synthetic-ledger, synthetic-records, synthetic-text]
+  eval: inspect
+  first_run: {tasks: 14, attempts_per_task: 1, claude-sonnet: {pass_rate: 1.00, cost_per_pass_cents: 60}, claude-haiku: {pass_rate: 0.93, cost_per_pass_cents: 22}}
+  status: under review for data quality
 record:                      # the system of record for agent work
   holds: [contract, approval, quote, bid, result, verdict, payment]
   each_entry: {actor: identity, at: time, hash: sha256}
