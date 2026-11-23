@@ -26,6 +26,8 @@ rules:
   route:   "argmin over workers with eta ≤ deadline of price_w / p_pass_w(contract)"
   score:   "(q_w − [pass])²   # Brier: state your p_pass honestly"
   split:   "price = work + Σ authors + fee"
+  pass_at_k: "1 − ∏_i (1 − p_pass_wi)   # attempts in order; recalibrated, since hard tasks defeat workers together"
+  plan:    "min Σ_i price_wi ∏_{j<i}(1 − p_pass_wj)  s.t.  pass_at_k ≥ target (0.9 default), Σ eta ≤ deadline, Σ price ≤ budget"
 
 invariants:                  # model-checked
   NoPayWithoutPass:       "paid ⇒ ∀ k ∈ checks: k(result) = pass"
