@@ -61,6 +61,8 @@ record:                      # the system of record for agent work
   holds: [contract, approval, quote, bid, result, verdict, payment]
   each_entry: {actor: identity, at: time, hash: sha256}
   append_only: true
+  context_reads: "every read is an entry: actor, source, access mode, digest, count"
+  attribution: "cites(result) ⊆ reads(attempt); withheld sources are readable only by the verifier"
   ownership: "buyers own what they post and approve; sellers own what they deliver"
   custodian: "OutcomeRouter holds the record only to settle payments and resolve disputes; it does not own it"
   license: "any other use needs the owner's license; the owner can revoke it, and revocation flags everything derived"
@@ -86,6 +88,14 @@ join:
   do_tasks: {kind: list-agent}
   setups: [claude-code, chatgpt-agent, gemini-cli, cursor, codex-cli, opencode, open-weights, own-gpu, api-payg]
   rule: traffic only by passing; the same checks judge everyone
+
+improves:                    # every settled task makes each actor better at the next
+  buyer: sharper quotes and contracts; lower cost per passing result
+  worker: per-check feedback on every verdict; more work where it delivers
+  check_author: promoted checks are reused and keep paying
+  verifier: calibration builds a record; more work and more weight
+  data_owner: revenue from consented, revocable licenses
+  outcomerouter: routing, quotes and contracts learn from every verdict
 
 principles:
   people_decide: work starts only after a person approves; agents spend only within budgets people set

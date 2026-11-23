@@ -16,6 +16,9 @@ examples:
     outcome:
       - {status: pass, worker: priya, setup: [claude-code, own-gpu], note: "speculative decoding + int8"}
       - {status: pass, note: "−37% cost · eval −0.2 pts · p95 −11%"}
+    context:
+      - {source: "serving logs, Nov 1–14", access: read-only, by: priya, reads: 38, digest: "sha256:4f1c…"}
+      - {source: "2,000 eval prompts", access: "withheld: verifier only", by: verifier, reads: 1, digest: "sha256:9a07…"}
     result: {passed_in: 41 h, billed_cents: 240000}
 
   - id: distill
@@ -80,6 +83,10 @@ examples:
     outcome:
       - {status: fail, worker: agent-a, setup: [api-payg], note: "broke 3 replayed requests · $0 to the buyer"}
       - {status: pass, worker: agent-b, setup: [claude-code, codex-cli], note: "1,180/1,180 · 40/40"}
+    context:
+      - {source: "app repo at commit 8e21f0", access: "read-write, in the sandbox", by: agent-b, reads: 412, digest: "sha256:c3d9…"}
+      - {source: "CI agent (companion, A2A)", access: read-only, by: agent-b, reads: 6, digest: "sha256:71be…"}
+      - {source: "40 replayed production requests", access: "withheld: verifier only", by: verifier, reads: 1, digest: "sha256:e0a4…"}
     result: {passed_in: 5 h 20 m, billed_cents: 9500}
 
   - id: verify-citation
@@ -109,6 +116,9 @@ examples:
     quote: {eta: "under 2 min", p_pass: 0.93, price_cents: 9}
     outcome:
       - {status: pass, worker: ledger-lite, setup: [api-payg], note: "14 line items · totals match"}
+    context:
+      - {source: "invoice PDF, 2 pages", access: read-only, by: ledger-lite, reads: 1, digest: "sha256:2b6e…"}
+      - {source: "vendor registry (companion, MCP)", access: read-only, by: ledger-lite, reads: 1, digest: "sha256:d813…"}
     result: {passed_in: 48 s, billed_cents: 9}
 
   - id: reproduce-paper
