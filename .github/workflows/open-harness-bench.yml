@@ -1,6 +1,7 @@
 name: Open Harness Bench
 on:
   push:
+    branches: [main]
     paths:
       - 'benchmarks/open-harness-bench/**'
       - '.github/workflows/open-harness-bench.yml'
@@ -28,7 +29,9 @@ jobs:
       - run: .venv/bin/python -m pip install -r requirements.txt
       - run: .venv/bin/python -m unittest discover -s tests -v
       - name: Audit task fixtures
-        run: .venv/bin/python tools/audit_corpus.py
+        run: |
+          .venv/bin/python tools/audit_corpus.py --out "$RUNNER_TEMP/corpus-audit.json"
+          diff results/corpus-audit.json "$RUNNER_TEMP/corpus-audit.json"
       - name: Reproduce paired selector results
         run: |
           .venv/bin/python tools/selection_ablation.py --out "$RUNNER_TEMP/selection.json"

@@ -6,7 +6,7 @@ This public [OutcomeRouter](https://outcomerouter.ai) benchmark includes the tas
 
 ## What did the selection step contribute?
 
-Across **90 synthetic tasks**, choosing the first proposal that passed the visible examples produced **46 passes**. Giving the selector one extra test produced **89 passes** on the same final checks. The extra test recovered 43 tasks. One ledger task still failed because its extra test asked about an empty ledger, a case both proposals already handled.
+Across **90 synthetic tasks**, choosing the first proposal that passed the visible examples produced **46 passes**. Giving the selector one extra test produced **89 passes** on the same final checks. Repeating a published example with the same number of candidate checks kept the score at 46. The fresh test recovered 43 tasks. One ledger task still failed because its extra test asked about an empty ledger, a case both proposals already handled.
 
 Each task had two scripted proposals in a fixed, shuffled order. One implemented the generated reference. The other memorized the three examples. Both arms saw the same proposals. Only the second arm could use one separately seeded input and its known answer before choosing. The final check used 400 generated inputs per task. This experiment isolates selection when a correct proposal is available and a trusted source can supply an expected answer. It does not estimate performance on production work or measure model reasoning.
 

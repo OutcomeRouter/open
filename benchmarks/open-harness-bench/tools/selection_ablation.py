@@ -58,13 +58,21 @@ def evaluate(path):
     if not all(passes(code, visible) for code in candidates.values()):
         raise RuntimeError(f"{task}: control candidate failed the visible examples")
     first = order[0]
-    second = next(name for name in order if passes(candidates[name], probe))
+    # Match the number of candidate checks. The control repeats a published example.
+    first_example = next(node for node in ast.parse(visible).body if isinstance(node, ast.Assert))
+    repeat = f"from solution import {function}\n{ast.unparse(first_example)}\n"
+    repeat_pass = {name: passes(code, repeat) for name, code in candidates.items()}
+    probe_pass = {name: passes(code, probe) for name, code in candidates.items()}
+    repeated = next(name for name in order if repeat_pass[name])
+    second = next(name for name in order if probe_pass[name])
     final = {name: passes(code, hidden) for name, code in candidates.items()}
     if not final["reference"]:
         raise RuntimeError(f"{task}: reference failed the final check")
     return {"task": task, "family": family, "candidate_order": order,
             "visible_only": first, "with_probe": second,
-            "visible_only_pass": final[first], "with_probe_pass": final[second]}
+            "visible_only_pass": final[first], "with_probe_pass": final[second],
+            "repeated_example": repeated, "repeated_example_pass": final[repeated],
+            "fresh_probe_accepts": probe_pass}
 
 
 def main():
@@ -76,6 +84,7 @@ def main():
     if not tasks:
         raise ValueError("No synthetic tasks found")
     counts = {"pairs": len(tasks), "visible_only_passes": sum(t["visible_only_pass"] for t in tasks),
+              "repeat_example_passes": sum(t["repeated_example_pass"] for t in tasks),
               "with_probe_passes": sum(t["with_probe_pass"] for t in tasks),
               "gains": sum(t["with_probe_pass"] and not t["visible_only_pass"] for t in tasks),
               "losses": sum(t["visible_only_pass"] and not t["with_probe_pass"] for t in tasks)}
