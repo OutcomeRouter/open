@@ -1,0 +1,4 @@
+from solution import *
+
+assert find_Average_Of_Cube(2) == 4.5
+print('ok')

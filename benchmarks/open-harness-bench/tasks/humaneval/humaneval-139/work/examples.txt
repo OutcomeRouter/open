@@ -1,0 +1,3 @@
+>>> from solution import *
+>>> special_factorial(4)
+288

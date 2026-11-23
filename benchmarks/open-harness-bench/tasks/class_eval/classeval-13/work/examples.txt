@@ -1,0 +1,10 @@
+>>> from solution import *
+>>> bookManagement = BookManagement()
+>>> bookManagement.add_book("book1", 1)
+>>> bookManagement.add_book("book2", 1)
+>>> bookManagement.view_inventory()
+{'book1': 1, 'book2': 1}
+>>> bookManagement = BookManagement()
+>>> bookManagement.add_book("book1", 1)
+>>> bookManagement.view_book_quantity("book3")
+0

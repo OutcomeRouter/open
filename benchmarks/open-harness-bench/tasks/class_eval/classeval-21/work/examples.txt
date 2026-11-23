@@ -1,0 +1,16 @@
+>>> from solution import *
+>>> classroom = Classroom(1)
+>>> classroom.add_course({'name': 'math', 'start_time': '8:00', 'end_time': '9:40'})
+>>> classroom = Classroom(1)
+>>> classroom.add_course({'name': 'math', 'start_time': '8:00', 'end_time': '9:40'})
+>>> classroom.add_course({'name': 'math', 'start_time': '8:00', 'end_time': '9:40'})
+>>> classroom = Classroom(1)
+>>> classroom.add_course({'name': 'math', 'start_time': '8:00', 'end_time': '9:40'})
+>>> classroom.is_free_at('10:00')
+True
+>>> classroom.is_free_at('9:00')
+False
+>>> classroom = Classroom(1)
+>>> classroom.add_course({'name': 'math', 'start_time': '8:00', 'end_time': '9:40'})
+>>> classroom.check_course_conflict({'name': 'SE', 'start_time': '9:40', 'end_time': '10:40'})
+False

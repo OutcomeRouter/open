@@ -1,0 +1,19 @@
+# Imported from Inspect evals: MBPP/170
+type = "code"
+task = "Write a function to find the sum of numbers in a list within a range specified by two indices.\n\nWrite it in solution.py. The function name and argument order must match this example: `assert sum_range_list([2,1,5,6,8,3,4,9,10,11,8,12], 8, 10) == 29`. Use only the Python standard library."
+workdir = "work"
+deadline_minutes = 15
+max_attempts = 3
+attempt_timeout_minutes = 7
+protect = ["test_example.py"]
+
+[[checks]]
+name = "the example passes"
+level = "tested"
+cmd = "python3 test_example.py"
+
+[[checks]]
+name = "MBPP/170 hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

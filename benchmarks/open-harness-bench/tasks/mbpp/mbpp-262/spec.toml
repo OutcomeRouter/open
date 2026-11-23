@@ -1,0 +1,19 @@
+# Imported from Inspect evals: MBPP/262
+type = "code"
+task = "Write a function that takes in a list and an integer L and splits the given list into two parts where the length of the first part of the list is L, and returns the resulting lists in a tuple.\n\nWrite it in solution.py. The function name and argument order must match this example: `assert split_two_parts([1,1,2,3,4,4,5,1],3)==([1, 1, 2], [3, 4, 4, 5, 1])`. Use only the Python standard library."
+workdir = "work"
+deadline_minutes = 15
+max_attempts = 3
+attempt_timeout_minutes = 7
+protect = ["test_example.py"]
+
+[[checks]]
+name = "the example passes"
+level = "tested"
+cmd = "python3 test_example.py"
+
+[[checks]]
+name = "MBPP/262 hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

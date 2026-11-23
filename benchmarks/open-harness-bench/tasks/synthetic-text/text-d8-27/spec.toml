@@ -1,0 +1,21 @@
+# Synthetic task (tools/gen_tasks.py --family text --seed 1)
+difficulty = 8
+family = "text"
+type = "synthetic-text"
+task = "Write solution.py with transform(s: str) -> str that applies these steps, in this order:\n\n1. Convert to uppercase.\n2. Remove every vowel (a, e, i, o, u, in either case).\n3. Remove repeated words: keep only the first occurrence of each space-separated word (split on single spaces; compare exactly; empty words count as words).\n4. Replace every ASCII digit with '#'.\n5. Strip leading and trailing whitespace.\n6. Sort the space-separated words by length, then alphabetically (split on single spaces, keep empty words).\n7. Convert to lowercase.\n8. Reverse the order of the space-separated words (split on single spaces, keep empty words).\n\nUse only the Python standard library."
+workdir = "work"
+deadline_minutes = 15
+max_attempts = 3
+attempt_timeout_minutes = 7
+protect = ["test_examples.py"]
+
+[[checks]]
+name = "the examples pass"
+level = "tested"
+cmd = "python3 test_examples.py"
+
+[[checks]]
+name = "synthetic/text hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

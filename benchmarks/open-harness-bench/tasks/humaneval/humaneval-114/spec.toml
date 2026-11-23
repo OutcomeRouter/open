@@ -1,0 +1,18 @@
+# Imported from Inspect evals: HumanEval/114
+type = "code"
+task = "Implement `minSubArraySum` in solution.py so it does what its docstring says. Keep the signature. Use only the Python standard library."
+workdir = "work"
+deadline_minutes = 15
+max_attempts = 3
+attempt_timeout_minutes = 7
+
+[[checks]]
+name = "the module imports"
+level = "tested"
+cmd = "python3 -c 'import solution'"
+
+[[checks]]
+name = "HumanEval/114 hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

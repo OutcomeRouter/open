@@ -1,0 +1,18 @@
+# Imported from Inspect evals: ClassEval_87
+type = "code-class"
+task = "Implement every method of `TimeUtils` in solution.py so it does what its docstrings say. Keep the class name, method names and signatures. Use only the Python standard library and the imports already in the file."
+workdir = "work"
+deadline_minutes = 30
+max_attempts = 3
+attempt_timeout_minutes = 15
+
+[[checks]]
+name = "the module imports"
+level = "tested"
+cmd = "python3 -c 'import solution'"
+
+[[checks]]
+name = "ClassEval_87 hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

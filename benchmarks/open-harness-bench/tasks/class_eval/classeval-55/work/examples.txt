@@ -1,0 +1,7 @@
+>>> from solution import *
+>>> manacher = Manacher('ababa')
+>>> manacher.palindromic_length(2, 1, 'a|b|a|b|a')
+2
+>>> manacher = Manacher('ababaxse')
+>>> manacher.palindromic_string()
+'ababa'

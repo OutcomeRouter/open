@@ -1,0 +1,7 @@
+>>> from solution import *
+>>> a = AvgPartition([1, 2, 3, 4], 2)
+>>> a.setNum()
+(2, 0)
+>>> a = AvgPartition([1, 2, 3, 4], 2)
+>>> a.get(0)
+[1, 2]

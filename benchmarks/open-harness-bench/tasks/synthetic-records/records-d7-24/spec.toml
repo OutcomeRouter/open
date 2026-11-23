@@ -1,0 +1,21 @@
+# Synthetic task (tools/gen_tasks.py --family records --seed 1)
+difficulty = 7
+family = "records"
+type = "synthetic-data"
+task = "Write solution.py with query(rows: list[dict]) -> list[dict]. Each row has `id` (int), `name` (str), `status` (str), `region` (str) and `amount` (int). Do not change the input list or its rows. Apply these steps, in this order:\n\n1. Add a field `tier`: \"gold\" if `amount` is at least 100, \"silver\" if at least 50, else \"bronze\".\n2. Sort by `amount`, largest first; rows with equal amounts keep their current order.\n3. Keep at most the first 5 rows.\n4. Keep only rows whose `amount` is greater than 50.\n5. Keep only rows whose `region` is \"eu\" or \"us\".\n6. Round `amount` to the nearest multiple of 10 (halves round up: 15 becomes 20).\n7. Keep only rows whose `status` is \"active\".\n\nUse only the Python standard library."
+workdir = "work"
+deadline_minutes = 15
+max_attempts = 3
+attempt_timeout_minutes = 7
+protect = ["test_examples.py"]
+
+[[checks]]
+name = "the examples pass"
+level = "tested"
+cmd = "python3 test_examples.py"
+
+[[checks]]
+name = "synthetic/records hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

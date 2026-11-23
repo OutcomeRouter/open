@@ -1,0 +1,10 @@
+>>> from solution import *
+>>> e = EncryptionUtils("key")
+>>> e.caesar_cipher("abc", 1)
+'bcd'
+>>> e = EncryptionUtils("key")
+>>> e.vigenere_cipher("abc")
+'kfa'
+>>> e = EncryptionUtils("key")
+>>> e.rail_fence_cipher("abc", 2)
+'acb'

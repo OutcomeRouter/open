@@ -1,0 +1,19 @@
+# Imported from Inspect evals: MBPP/245
+type = "code"
+task = "Write a function that takes an array and finds the maximum sum of a bitonic subsequence for the given array, where a sequence is bitonic if it is first increasing and then decreasing.\n\nWrite it in solution.py. The function name and argument order must match this example: `assert max_sum([1, 15, 51, 45, 33, 100, 12, 18, 9]) == 194`. Use only the Python standard library."
+workdir = "work"
+deadline_minutes = 15
+max_attempts = 3
+attempt_timeout_minutes = 7
+protect = ["test_example.py"]
+
+[[checks]]
+name = "the example passes"
+level = "tested"
+cmd = "python3 test_example.py"
+
+[[checks]]
+name = "MBPP/245 hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

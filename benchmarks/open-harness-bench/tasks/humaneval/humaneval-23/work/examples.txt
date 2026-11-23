@@ -1,0 +1,5 @@
+>>> from solution import *
+>>> strlen('')
+0
+>>> strlen('abc')
+3

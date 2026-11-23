@@ -1,0 +1,19 @@
+# Imported from Inspect evals: MBPP/233
+type = "code"
+task = "Write a function to find the lateral surface area of a cylinder.\n\nWrite it in solution.py. The function name and argument order must match this example: `assert math.isclose(lateralsuface_cylinder(10,5), 314.15000000000003, rel_tol=0.001)`. Use only the Python standard library."
+workdir = "work"
+deadline_minutes = 15
+max_attempts = 3
+attempt_timeout_minutes = 7
+protect = ["test_example.py"]
+
+[[checks]]
+name = "the example passes"
+level = "tested"
+cmd = "python3 test_example.py"
+
+[[checks]]
+name = "MBPP/233 hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

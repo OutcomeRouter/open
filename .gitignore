@@ -1,0 +1,5 @@
+.venv/
+.test-home/
+__pycache__/
+*.pyc
+logs/

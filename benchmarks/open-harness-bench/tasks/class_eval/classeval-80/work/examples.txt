@@ -1,0 +1,9 @@
+>>> from solution import *
+>>> SQLQueryBuilder.select('table1', columns = ["col1","col2"], where = {"age": 15})
+"SELECT col1, col2 FROM table1 WHERE age='15'"
+>>> SQLQueryBuilder.insert('table1', {'name': 'Test', 'age': 14})
+"INSERT INTO table1 (name, age) VALUES ('Test', '14')"
+>>> SQLQueryBuilder.delete('table1', {'name': 'Test', 'age': 14})
+"DELETE FROM table1 WHERE name='Test' AND age='14'"
+>>> SQLQueryBuilder.update('table1', {'name': 'Test2', 'age': 15}, where = {'name':'Test'})
+"UPDATE table1 SET name='Test2', age='15' WHERE name='Test'"

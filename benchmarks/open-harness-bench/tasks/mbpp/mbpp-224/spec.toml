@@ -1,0 +1,19 @@
+# Imported from Inspect evals: MBPP/224
+type = "code"
+task = "Write a python function to count the number of set bits (binary digits with value 1) in a given number.\n\nWrite it in solution.py. The function name and argument order must match this example: `assert count_Set_Bits(2) == 1`. Use only the Python standard library."
+workdir = "work"
+deadline_minutes = 15
+max_attempts = 3
+attempt_timeout_minutes = 7
+protect = ["test_example.py"]
+
+[[checks]]
+name = "the example passes"
+level = "tested"
+cmd = "python3 test_example.py"
+
+[[checks]]
+name = "MBPP/224 hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

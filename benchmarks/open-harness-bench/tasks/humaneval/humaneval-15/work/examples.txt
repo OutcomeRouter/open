@@ -1,0 +1,5 @@
+>>> from solution import *
+>>> string_sequence(0)
+'0'
+>>> string_sequence(5)
+'0 1 2 3 4 5'

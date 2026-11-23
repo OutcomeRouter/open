@@ -1,0 +1,4 @@
+from solution import *
+
+assert extract_freq([(3, 4), (1, 2), (4, 3), (5, 6)] ) == 3
+print('ok')

@@ -1,0 +1,8 @@
+>>> from solution import *
+>>> b = BalancedBrackets("a(b)c")
+>>> b.clear_expr()
+>>> b.expr
+'()'
+>>> b = BalancedBrackets("a(b)c")
+>>> b.check_balanced_brackets()
+True

@@ -1,0 +1,19 @@
+# Imported from Inspect evals: MBPP/411
+type = "code"
+task = "Write a function to convert the given snake case string to camel case string.\n\nWrite it in solution.py. The function name and argument order must match this example: `assert snake_to_camel('android_tv') == 'AndroidTv'`. Use only the Python standard library."
+workdir = "work"
+deadline_minutes = 15
+max_attempts = 3
+attempt_timeout_minutes = 7
+protect = ["test_example.py"]
+
+[[checks]]
+name = "the example passes"
+level = "tested"
+cmd = "python3 test_example.py"
+
+[[checks]]
+name = "MBPP/411 hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

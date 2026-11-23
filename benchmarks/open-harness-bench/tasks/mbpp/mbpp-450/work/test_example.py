@@ -1,0 +1,4 @@
+from solution import *
+
+assert extract_string(['Python', 'list', 'exercises', 'practice', 'solution'] ,8)==['practice', 'solution']
+print('ok')

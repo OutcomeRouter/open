@@ -1,0 +1,19 @@
+# Imported from Inspect evals: MBPP/272
+type = "code"
+task = "Write a function that takes in a list of tuples and returns a list containing the rear element of each tuple.\n\nWrite it in solution.py. The function name and argument order must match this example: `assert rear_extract([(1, 'Rash', 21), (2, 'Varsha', 20), (3, 'Kil', 19)]) == [21, 20, 19]`. Use only the Python standard library."
+workdir = "work"
+deadline_minutes = 15
+max_attempts = 3
+attempt_timeout_minutes = 7
+protect = ["test_example.py"]
+
+[[checks]]
+name = "the example passes"
+level = "tested"
+cmd = "python3 test_example.py"
+
+[[checks]]
+name = "MBPP/272 hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

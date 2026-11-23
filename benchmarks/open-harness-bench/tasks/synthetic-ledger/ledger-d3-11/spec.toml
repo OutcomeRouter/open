@@ -1,0 +1,21 @@
+# Synthetic task (tools/gen_tasks.py --family ledger --seed 1)
+difficulty = 3
+family = "ledger"
+type = "synthetic-ledger"
+task = "Write solution.py with settle(events: list[dict]) -> dict. Each event has `id` (int), `t` (int, seconds), `type` (str) and `amount` (int, cents). The balance starts at 0. A `deposit` adds its amount; a `withdraw` subtracts it. Events of any other type are rejected, except `interest` events, which are ignored (neither applied nor rejected) unless a rule below says otherwise. Return {\"balance\": int, \"applied\": [ids in the order applied], \"rejected\": [ids in the order rejected]}. Do not change the input.\n\nRules:\n\n1. Process events in order of `t`, breaking ties by `id` (otherwise, in list order).\n2. Withdrawals applied on the same day (day = t // 86400) may total at most 50000, fees not counted; a withdrawal over that is rejected.\n3. An `interest` event adds 1% of the balance, rounded down, when the balance is positive; it is applied either way.\n\nUse only the Python standard library."
+workdir = "work"
+deadline_minutes = 15
+max_attempts = 3
+attempt_timeout_minutes = 7
+protect = ["test_examples.py"]
+
+[[checks]]
+name = "the examples pass"
+level = "tested"
+cmd = "python3 test_examples.py"
+
+[[checks]]
+name = "synthetic/ledger hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

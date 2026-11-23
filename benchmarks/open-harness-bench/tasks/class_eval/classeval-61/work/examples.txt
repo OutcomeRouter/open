@@ -1,0 +1,38 @@
+>>> from solution import *
+>>> musicPlayer = MusicPlayer()
+>>> musicPlayer.add_song("song1")
+>>> musicPlayer.playlist
+['song1']
+>>> musicPlayer = MusicPlayer()
+>>> musicPlayer.playlist = ["song1", "song2"]
+>>> musicPlayer.remove_song("song1")
+>>> musicPlayer.playlist
+['song2']
+>>> musicPlayer = MusicPlayer()
+>>> musicPlayer.playlist = ["song1", "song2"]
+>>> musicPlayer.current_song = "song1"
+>>> musicPlayer.play()
+'song1'
+>>> musicPlayer = MusicPlayer()
+>>> musicPlayer.playlist = ["song1", "song2"]
+>>> musicPlayer.current_song = "song1"
+>>> musicPlayer.stop()
+True
+>>> musicPlayer = MusicPlayer()
+>>> musicPlayer.playlist = ["song1", "song2"]
+>>> musicPlayer.current_song = "song1"
+>>> musicPlayer.switch_song()
+True
+>>> musicPlayer = MusicPlayer()
+>>> musicPlayer.playlist = ["song1", "song2"]
+>>> musicPlayer.current_song = "song2"
+>>> musicPlayer.previous_song()
+True
+>>> musicPlayer = MusicPlayer()
+>>> musicPlayer.set_volume(50)
+>>> musicPlayer.volume
+50
+>>> musicPlayer = MusicPlayer()
+>>> musicPlayer.playlist = ["song1", "song2"]
+>>> musicPlayer.shuffle()
+True

@@ -1,0 +1,4 @@
+from solution import *
+
+assert min_of_three(10,20,0)==0
+print('ok')

@@ -1,0 +1,16 @@
+OutcomeRouter settlement model: TLC results
+model: Settlement.tla · checker: TLC2 Version 2.19 (tla2tools 1.7.4) · run 2026-11-23
+bounds: Checks = {c1, c2, w1}, Withheld = {w1}, MaxVersion = 2, Price = 100, AuthorShare = 5, Fee = 10
+
+SettlementGuard.cfg (GUARD = TRUE)
+  Model checking completed. No error has been found.
+  230 states generated, 90 distinct states found, 0 states left on queue.
+  invariants: NoPayWithoutPass, ApprovalBindsToVersion, SettleAtMostOnce
+  (PayoutConserved also holds, but by construction)
+
+SettlementNoGuard.cfg (GUARD = FALSE)
+  Invariant ApprovalBindsToVersion is violated.
+  counterexample: approve v1 -> edit to v2 -> submit -> all checks pass -> settle on the v1 approval
+
+Scope: a bounded model of the settlement design, not a proof about the running service.
+Not modelled: disputes and reopened settlement, priority races, budgets, per-attempt pay.

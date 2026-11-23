@@ -1,0 +1,22 @@
+import os, sys
+sys.path.insert(0, os.getcwd())
+from solution import *
+
+def check(candidate):
+
+    # Check some simple cases
+    assert candidate('aBCdEf')  == 1
+    assert candidate('abcdefg') == 0
+    assert candidate('dBBE') == 0
+    assert candidate('B')  == 0
+    assert candidate('U')  == 1
+    assert candidate('') == 0
+    assert candidate('EEEE') == 2
+
+    # Check some edge cases that are easy to work out by hand.
+    assert True
+
+
+
+check(count_upper)
+print('ok')

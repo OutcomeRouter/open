@@ -1,0 +1,4 @@
+from solution import *
+
+assert is_sublist([2,4,3,5,7],[3,7])==False
+print('ok')

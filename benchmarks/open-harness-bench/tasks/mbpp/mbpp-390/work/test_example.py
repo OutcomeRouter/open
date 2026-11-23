@@ -1,0 +1,4 @@
+from solution import *
+
+assert add_string([1,2,3,4],'temp{0}')==['temp1', 'temp2', 'temp3', 'temp4']
+print('ok')

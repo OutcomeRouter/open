@@ -1,0 +1,28 @@
+>>> from solution import *
+>>> jobMarketplace = JobMarketplace()
+>>> jobMarketplace.post_job("Software Engineer", "ABC Company", ['requirement1', 'requirement2'])
+>>> jobMarketplace.job_listings
+[{'job_title': 'Software Engineer', 'company': 'ABC Company', 'requirements': ['requirement1', 'requirement2']}]
+>>> jobMarketplace = JobMarketplace()
+>>> jobMarketplace.job_listings = [{"job_title": "Software Engineer", "company": "ABC Company", "requirements": ['requirement1', 'requirement2']}]
+>>> jobMarketplace.remove_job(jobMarketplace.job_listings[0])
+>>> jobMarketplace.job_listings
+[]
+>>> jobMarketplace = JobMarketplace()
+>>> jobMarketplace.submit_resume("Tom", ['skill1', 'skill2'], "experience")
+>>> jobMarketplace.resumes
+[{'name': 'Tom', 'skills': ['skill1', 'skill2'], 'experience': 'experience'}]
+>>> jobMarketplace = JobMarketplace()
+>>> jobMarketplace.resumes = [{"name": "Tom", "skills": ['skill1', 'skill2'], "experience": "experience"}]
+>>> jobMarketplace.withdraw_resume(jobMarketplace.resumes[0])
+>>> jobMarketplace.resumes
+[]
+>>> jobMarketplace = JobMarketplace()
+>>> jobMarketplace.job_listings = [{"job_title": "Software Engineer", "company": "ABC Company", "requirements": ['skill1', 'skill2']}]
+>>> jobMarketplace.search_jobs("skill1")
+[{'job_title': 'Software Engineer', 'company': 'ABC Company', 'requirements': ['skill1', 'skill2']}]
+>>> jobMarketplace = JobMarketplace()
+>>> jobMarketplace.resumes = [{"name": "Tom", "skills": ['skill1', 'skill2'], "experience": "experience"}]
+>>> jobMarketplace.job_listings = [{"job_title": "Software Engineer", "company": "ABC Company", "requirements": ['skill1', 'skill2']}]
+>>> jobMarketplace.get_job_applicants(jobMarketplace.job_listings[0])
+[{'name': 'Tom', 'skills': ['skill1', 'skill2'], 'experience': 'experience'}]

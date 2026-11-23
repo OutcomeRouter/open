@@ -1,0 +1,11 @@
+>>> from solution import *
+>>> eightPuzzle = EightPuzzle([[2, 3, 4], [5, 8, 1], [6, 0, 7]])
+>>> eightPuzzle.find_blank([[2, 3, 4], [5, 8, 1], [6, 0, 7]])
+(2, 1)
+>>> eightPuzzle.move([[2, 3, 4], [5, 8, 1], [6, 0, 7]], 'left')
+[[2, 3, 4], [5, 8, 1], [0, 6, 7]]
+>>> eightPuzzle.get_possible_moves([[2, 3, 4], [5, 8, 1], [6, 0, 7]])
+['up', 'left', 'right']
+>>> eightPuzzle = EightPuzzle([[1, 2, 3], [4, 5, 6], [7, 0, 8]])
+>>> eightPuzzle.solve()
+['right']

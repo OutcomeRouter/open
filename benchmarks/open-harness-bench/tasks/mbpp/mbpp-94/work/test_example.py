@@ -1,0 +1,4 @@
+from solution import *
+
+assert index_minimum([('Rash', 143), ('Manjeet', 200), ('Varsha', 100)]) == 'Varsha'
+print('ok')

@@ -1,0 +1,7 @@
+>>> from solution import *
+>>> fib4(5)
+4
+>>> fib4(6)
+8
+>>> fib4(7)
+14

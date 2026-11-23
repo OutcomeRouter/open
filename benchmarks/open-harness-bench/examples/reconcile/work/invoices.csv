@@ -1,0 +1,6 @@
+invoice_id,vendor,amount
+INV-1001,Acme Supplies,1200.00
+INV-1002,Globex,845.50
+INV-1003,Initech,3000.00
+INV-1004,Acme Supplies,99.99
+INV-1005,Umbrella,410.25

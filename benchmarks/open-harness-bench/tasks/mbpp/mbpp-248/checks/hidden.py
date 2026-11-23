@@ -1,0 +1,9 @@
+import os, sys
+sys.path.insert(0, os.getcwd())
+import math
+from solution import *
+
+assert math.isclose(harmonic_sum(7), 2.5928571428571425, rel_tol=0.001)
+assert math.isclose(harmonic_sum(4), 2.083333333333333, rel_tol=0.001)
+assert math.isclose(harmonic_sum(19), 3.547739657143682, rel_tol=0.001)
+print('ok')

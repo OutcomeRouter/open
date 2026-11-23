@@ -1,0 +1,7 @@
+>>> from solution import *
+>>> make_palindrome('')
+''
+>>> make_palindrome('cat')
+'catac'
+>>> make_palindrome('cata')
+'catac'

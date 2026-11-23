@@ -1,0 +1,9 @@
+>>> from solution import *
+>>> correct_bracketing("(")
+False
+>>> correct_bracketing("()")
+True
+>>> correct_bracketing("(()())")
+True
+>>> correct_bracketing(")(()")
+False

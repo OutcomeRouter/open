@@ -1,0 +1,19 @@
+# Imported from Inspect evals: MBPP/128
+type = "code"
+task = "Write a function to find words that are longer than n characters from a given list of words.\n\nWrite it in solution.py. The function name and argument order must match this example: `assert long_words(3,\"python is a programming language\")==['python','programming','language']`. Use only the Python standard library."
+workdir = "work"
+deadline_minutes = 15
+max_attempts = 3
+attempt_timeout_minutes = 7
+protect = ["test_example.py"]
+
+[[checks]]
+name = "the example passes"
+level = "tested"
+cmd = "python3 test_example.py"
+
+[[checks]]
+name = "MBPP/128 hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

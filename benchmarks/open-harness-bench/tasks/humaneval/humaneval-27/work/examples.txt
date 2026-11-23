@@ -1,0 +1,3 @@
+>>> from solution import *
+>>> flip_case('Hello')
+'hELLO'

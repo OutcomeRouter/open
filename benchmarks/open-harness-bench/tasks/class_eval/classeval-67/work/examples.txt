@@ -1,0 +1,19 @@
+>>> from solution import *
+>>> order = Order()
+>>> order.menu.append({"dish": "dish1", "price": 10, "count": 5})
+>>> order.add_dish({"dish": "dish1", "price": 10, "count": 3})
+True
+>>> order = Order()
+>>> order.menu.append({"dish": "dish1", "price": 10, "count": 5})
+>>> order.sales = {"dish1": 0.8}
+>>> order.add_dish({"dish": "dish1", "price": 10, "count": 4})
+True
+>>> order.calculate_total()
+32.0
+>>> order = Order()
+>>> order.menu.append({"dish": "dish1", "price": 10, "count": 5})
+>>> order.sales = {"dish1": 0.8}
+>>> order.add_dish({"dish": "dish1", "price": 10, "count": 4})
+True
+>>> order.checkout()
+32.0

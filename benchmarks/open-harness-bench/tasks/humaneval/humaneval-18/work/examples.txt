@@ -1,0 +1,7 @@
+>>> from solution import *
+>>> how_many_times('', 'a')
+0
+>>> how_many_times('aaa', 'a')
+3
+>>> how_many_times('aaaa', 'aa')
+3

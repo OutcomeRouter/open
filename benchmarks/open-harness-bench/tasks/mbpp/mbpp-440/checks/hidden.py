@@ -1,0 +1,8 @@
+import os, sys
+sys.path.insert(0, os.getcwd())
+from solution import *
+
+assert find_adverb_position("clearly!! we can see the sky")==(0, 7, 'clearly')
+assert find_adverb_position("seriously!! there are many roses")==(0, 9, 'seriously')
+assert find_adverb_position("unfortunately!! sita is going to home")==(0, 13, 'unfortunately')
+print('ok')

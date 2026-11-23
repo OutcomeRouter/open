@@ -1,0 +1,4 @@
+from solution import *
+
+assert tuple_to_int((1,2,3))==123
+print('ok')

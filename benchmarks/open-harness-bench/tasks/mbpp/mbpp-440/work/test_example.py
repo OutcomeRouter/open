@@ -1,0 +1,4 @@
+from solution import *
+
+assert find_adverb_position("clearly!! we can see the sky")==(0, 7, 'clearly')
+print('ok')

@@ -1,0 +1,4 @@
+from solution import *
+
+assert find_Max_Num([1,2,3]) == 321
+print('ok')

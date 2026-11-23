@@ -1,0 +1,6 @@
+>>> from solution import *
+>>> unescaper = NumericEntityUnescaper()
+>>> unescaper.replace("&#65;&#66;&#67;")
+'ABC'
+>>> NumericEntityUnescaper.is_hex_char('a')
+True

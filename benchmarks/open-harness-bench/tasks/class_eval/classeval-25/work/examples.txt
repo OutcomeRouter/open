@@ -1,0 +1,12 @@
+>>> from solution import *
+>>> cookies_util = CookiesUtil('cookies.json')
+>>> cookies_util.get_cookies({'cookies': {'key1': 'value1', 'key2': 'value2'}})
+>>> cookies_util.cookies
+{'key1': 'value1', 'key2': 'value2'}
+>>> cookies_util = CookiesUtil('cookies.json')
+>>> cookies_util.load_cookies()
+{'key1': 'value1', 'key2': 'value2'}
+>>> cookies_util = CookiesUtil('cookies.json')
+>>> cookies_util.cookies = {'key1': 'value1', 'key2': 'value2'}
+>>> cookies_util._save_cookies()
+True

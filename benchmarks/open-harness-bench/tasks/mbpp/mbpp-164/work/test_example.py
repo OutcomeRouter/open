@@ -1,0 +1,4 @@
+from solution import *
+
+assert are_equivalent(36, 57) == False
+print('ok')

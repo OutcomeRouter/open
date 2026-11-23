@@ -1,0 +1,15 @@
+>>> from solution import *
+>>> bit_status_util = BitStatusUtil()
+>>> bit_status_util.add(2,4)
+6
+>>> bit_status_util = BitStatusUtil()
+>>> bit_status_util.has(6,2)
+True
+>>> bit_status_util = BitStatusUtil()
+>>> bit_status_util.remove(6,2)
+4
+>>> bit_status_util = BitStatusUtil()
+>>> bit_status_util.check([2,3,4])
+Traceback (most recent call last):
+...
+ValueError: 3 not even

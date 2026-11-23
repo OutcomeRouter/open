@@ -1,0 +1,5 @@
+>>> from solution import *
+>>> vowels_count("abcde")
+2
+>>> vowels_count("ACEDY")
+3

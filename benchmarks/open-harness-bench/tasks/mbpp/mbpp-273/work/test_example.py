@@ -1,0 +1,4 @@
+from solution import *
+
+assert substract_elements((10, 4, 5), (2, 5, 18)) == (8, -1, -13)
+print('ok')

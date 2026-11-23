@@ -1,0 +1,19 @@
+# Imported from Inspect evals: MBPP/138
+type = "code"
+task = "Write a python function to check whether the given number can be represented as sum of non-zero powers of 2 or not.\n\nWrite it in solution.py. The function name and argument order must match this example: `assert is_Sum_Of_Powers_Of_Two(10) == True`. Use only the Python standard library."
+workdir = "work"
+deadline_minutes = 15
+max_attempts = 3
+attempt_timeout_minutes = 7
+protect = ["test_example.py"]
+
+[[checks]]
+name = "the example passes"
+level = "tested"
+cmd = "python3 test_example.py"
+
+[[checks]]
+name = "MBPP/138 hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

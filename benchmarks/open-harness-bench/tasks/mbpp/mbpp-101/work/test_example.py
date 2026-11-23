@@ -1,0 +1,4 @@
+from solution import *
+
+assert kth_element([12,3,5,7,19], 2) == 3
+print('ok')

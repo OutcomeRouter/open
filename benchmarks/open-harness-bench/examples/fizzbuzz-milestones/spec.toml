@@ -1,0 +1,36 @@
+# The FizzBuzz task in two milestones, with checks run in Docker (no network).
+type = "code"
+task = "Build a small FizzBuzz program in fizzbuzz.py."
+workdir = "../fizzbuzz/work"
+sandbox = "docker"
+image = "python:3.12-slim"
+deadline_minutes = 10
+max_attempts = 3
+attempt_timeout_minutes = 5
+protect = ["test_fizzbuzz.py"]  # restored before checks, so agents cannot weaken the tests
+
+[[milestones]]
+name = "function"
+task = 'Implement fizzbuzz(n): "Fizz" for multiples of 3, "Buzz" for 5, "FizzBuzz" for both, else str(n).'
+
+[[milestones]]
+name = "cli"
+task = "Make `python3 fizzbuzz.py N` print fizzbuzz(1..N), one per line."
+
+[[checks]]
+name = "unit tests pass"
+level = "tested"
+milestone = "function"
+cmd = "python3 -m unittest -q test_fizzbuzz"
+
+[[checks]]
+name = "cli prints 1..15 exactly"
+level = "verified"
+milestone = "cli"
+cmd = """test "$(python3 fizzbuzz.py 15 | tr '\\n' ' ')" = "1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz " """
+
+[[checks]]
+name = "large inputs"
+level = "tested"
+withheld = true
+cmd = """python3 -c 'import fizzbuzz as f; assert f.fizzbuzz(300)=="FizzBuzz" and f.fizzbuzz(301)=="301"'"""

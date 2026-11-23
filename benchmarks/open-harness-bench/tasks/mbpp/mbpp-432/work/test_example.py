@@ -1,0 +1,4 @@
+from solution import *
+
+assert median_trapezium(15,25,35)==20
+print('ok')

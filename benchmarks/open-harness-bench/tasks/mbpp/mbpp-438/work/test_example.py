@@ -1,0 +1,4 @@
+from solution import *
+
+assert count_bidirectional([(5, 6), (1, 2), (6, 5), (9, 1), (6, 5), (2, 1)] ) == 3
+print('ok')

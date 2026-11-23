@@ -1,0 +1,19 @@
+# Imported from Inspect evals: MBPP/419
+type = "code"
+task = "Write a function to round every number of a given list of numbers and print the total sum multiplied by the length of the list.\n\nWrite it in solution.py. The function name and argument order must match this example: `assert round_and_sum([22.4, 4.0, -16.22, -9.10, 11.00, -12.22, 14.20, -5.20, 17.50])==243`. Use only the Python standard library."
+workdir = "work"
+deadline_minutes = 15
+max_attempts = 3
+attempt_timeout_minutes = 7
+protect = ["test_example.py"]
+
+[[checks]]
+name = "the example passes"
+level = "tested"
+cmd = "python3 test_example.py"
+
+[[checks]]
+name = "MBPP/419 hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

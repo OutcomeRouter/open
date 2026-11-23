@@ -1,0 +1,14 @@
+>>> from solution import *
+>>> bdp = BinaryDataProcessor("01101000daf3e4r01100101011011000110110001101111")
+>>> bdp.clean_non_binary_chars()
+>>> bdp.binary_string
+'0110100001100101011011000110110001101111'
+>>> bdp = BinaryDataProcessor("0110100001100101011011000110110001101111")
+>>> bdp.calculate_binary_info()
+{'Zeroes': 0.475, 'Ones': 0.525, 'Bit length': 40}
+>>> bdp = BinaryDataProcessor("0110100001100101011011000110110001101111")
+>>> bdp.convert_to_ascii()
+'hello'
+>>> bdp = BinaryDataProcessor("0110100001100101011011000110110001101111")
+>>> bdp.convert_to_utf8()
+'hello'

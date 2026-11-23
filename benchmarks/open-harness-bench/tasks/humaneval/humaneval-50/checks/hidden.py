@@ -1,0 +1,24 @@
+import os, sys
+sys.path.insert(0, os.getcwd())
+from solution import *
+
+
+
+METADATA = {}
+
+
+def check(candidate):
+    from random import randint, choice
+    import copy
+    import string
+
+    letters = string.ascii_lowercase
+    for _ in range(100):
+        str = ''.join(choice(letters) for i in range(randint(10, 20)))
+        encoded_str = encode_shift(str)
+        assert candidate(copy.deepcopy(encoded_str)) == str
+
+
+
+check(decode_shift)
+print('ok')

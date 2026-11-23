@@ -1,0 +1,4 @@
+from solution import *
+
+assert find_tuples([(6, 24, 12), (7, 9, 6), (12, 18, 21)], 6) == [(6, 24, 12)]
+print('ok')

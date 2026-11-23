@@ -1,0 +1,19 @@
+# Imported from Inspect evals: MBPP/119
+type = "code"
+task = "Write a python function to find the element that appears only once in a sorted array.\n\nWrite it in solution.py. The function name and argument order must match this example: `assert search([1,1,2,2,3]) == 3`. Use only the Python standard library."
+workdir = "work"
+deadline_minutes = 15
+max_attempts = 3
+attempt_timeout_minutes = 7
+protect = ["test_example.py"]
+
+[[checks]]
+name = "the example passes"
+level = "tested"
+cmd = "python3 test_example.py"
+
+[[checks]]
+name = "MBPP/119 hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

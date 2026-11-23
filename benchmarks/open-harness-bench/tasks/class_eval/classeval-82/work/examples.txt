@@ -1,0 +1,33 @@
+>>> from solution import *
+>>> tracker = StockPortfolioTracker(10000.0)
+>>> tracker.add_stock({"name": "AAPL", "price": 150.0, "quantity": 10})
+>>> tracker.portfolio
+[{'name': 'AAPL', 'price': 150.0, 'quantity': 10}]
+>>> tracker = StockPortfolioTracker(10000.0)
+>>> tracker.portfolio = [{'name': 'AAPL', 'price': 150.0, 'quantity': 10}]
+>>> tracker.remove_stock({"name": "AAPL", "price": 150.0, "quantity": 10})
+True
+>>> tracker.portfolio
+[]
+>>> tracker = StockPortfolioTracker(10000.0)
+>>> tracker.buy_stock({"name": "AAPL", "price": 150.0, "quantity": 10})
+True
+>>> tracker.portfolio
+[{'name': 'AAPL', 'price': 150.0, 'quantity': 10}]
+>>> tracker = StockPortfolioTracker(10000.0)
+>>> tracker.portfolio = [{'name': 'AAPL', 'price': 150.0, 'quantity': 10}]
+>>> tracker.sell_stock({"name": "AAPL", "price": 150.0, "quantity": 10})
+True
+>>> tracker.portfolio
+[]
+>>> tracker = StockPortfolioTracker(10000.0)
+>>> tracker.portfolio = [{'name': 'AAPL', 'price': 150.0, 'quantity': 10}]
+>>> tracker.calculate_portfolio_value()
+11500.0
+>>> tracker = StockPortfolioTracker(10000.0)
+>>> tracker.portfolio = [{'name': 'AAPL', 'price': 150.0, 'quantity': 10}]
+>>> tracker.get_portfolio_summary()
+(11500.0, [{'name': 'AAPL', 'value': 1500.0}])
+>>> tracker = StockPortfolioTracker(10000.0)
+>>> tracker.get_stock_value({"name": "AAPL", "price": 150.0, "quantity": 10})
+1500.0

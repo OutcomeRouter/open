@@ -1,0 +1,6 @@
+from solution import *
+
+assert settle([{'id': 6, 't': 90000, 'type': 'refund', 'amount': 25000}, {'id': 3, 't': 172801, 'type': 'refund', 'amount': 25}, {'id': 12, 't': 86399, 'type': 'interest', 'amount': 0}, {'id': 6, 't': 2, 'type': 'withdraw', 'amount': 30000}, {'id': 3, 't': 172800, 'type': 'withdraw', 'amount': 100001}, {'id': 5, 't': 0, 'type': 'deposit', 'amount': 30000}, {'id': 7, 't': 0, 'type': 'withdraw', 'amount': 100}, {'id': 5, 't': 90000, 'type': 'withdraw', 'amount': 30000}]) == {'balance': 30173, 'applied': [5, 7, 12], 'rejected': [6, 3]}
+assert settle([{'id': 5, 't': 3602, 'type': 'deposit', 'amount': 100}]) == {'balance': 100, 'applied': [5], 'rejected': []}
+assert settle([{'id': 12, 't': 86401, 'type': 'withdraw', 'amount': 0}, {'id': 8, 't': 2, 'type': 'withdraw', 'amount': 100001}, {'id': 8, 't': 0, 'type': 'withdraw', 'amount': 100000}, {'id': 6, 't': 3601, 'type': 'withdraw', 'amount': 0}, {'id': 7, 't': 86401, 'type': 'refund', 'amount': 4975}, {'id': 10, 't': 3602, 'type': 'deposit', 'amount': 0}, {'id': 7, 't': 172800, 'type': 'deposit', 'amount': 25}, {'id': 1, 't': 172800, 'type': 'deposit', 'amount': 100}]) == {'balance': 100, 'applied': [10, 1], 'rejected': [8, 6, 7, 12]}
+print('ok')

@@ -1,0 +1,4 @@
+from solution import *
+
+assert max_sub_array_sum_repeated([10, 20, -30, -1], 4, 3) == 30
+print('ok')

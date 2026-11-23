@@ -1,0 +1,4 @@
+from solution import *
+
+assert sort_counter({'Math':81, 'Physics':83, 'Chemistry':87})==[('Chemistry', 87), ('Physics', 83), ('Math', 81)]
+print('ok')

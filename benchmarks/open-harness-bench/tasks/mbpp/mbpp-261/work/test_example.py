@@ -1,0 +1,4 @@
+from solution import *
+
+assert division_elements((10, 4, 6, 9),(5, 2, 3, 3)) == (2, 2, 2, 3)
+print('ok')

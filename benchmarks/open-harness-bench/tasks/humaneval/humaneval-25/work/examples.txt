@@ -1,0 +1,7 @@
+>>> from solution import *
+>>> factorize(8)
+[2, 2, 2]
+>>> factorize(25)
+[5, 5]
+>>> factorize(70)
+[2, 5, 7]

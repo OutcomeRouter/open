@@ -1,0 +1,4 @@
+from solution import *
+
+assert max_product([3, 100, 4, 5, 150, 6]) == 3000
+print('ok')

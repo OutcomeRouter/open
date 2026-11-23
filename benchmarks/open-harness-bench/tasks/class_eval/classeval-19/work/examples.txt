@@ -1,0 +1,7 @@
+>>> from solution import *
+>>> cs = ChandrasekharSieve(20)
+>>> cs.generate_primes()
+[2, 3, 5, 7, 11, 13, 17, 19]
+>>> cs = ChandrasekharSieve(20)
+>>> cs.get_primes()
+[2, 3, 5, 7, 11, 13, 17, 19]

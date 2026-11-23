@@ -1,0 +1,4 @@
+from solution import *
+
+assert comb_sort([5, 15, 37, 25, 79]) == [5, 15, 25, 37, 79]
+print('ok')

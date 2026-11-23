@@ -1,0 +1,4 @@
+from solution import *
+
+assert neg_nos([-1,4,5,-6]) == [-1,-6]
+print('ok')

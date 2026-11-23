@@ -1,0 +1,5 @@
+>>> from solution import *
+>>> sum_product([])
+(0, 1)
+>>> sum_product([1, 2, 3, 4])
+(10, 24)

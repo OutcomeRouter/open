@@ -1,0 +1,4 @@
+from solution import *
+
+assert check_type((5, 6, 7, 3, 5, 6) ) == True
+print('ok')

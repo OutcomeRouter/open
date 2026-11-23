@@ -1,0 +1,21 @@
+>>> from solution import *
+>>> player_1 = RPGCharacter('player 1', 100, 10, 3)
+>>> player_2 = RPGCharacter('player 2', 100, 7, 2)
+>>> player_1.attack(player_2)
+>>> player_2.hp
+92
+>>> player_1 = RPGCharacter('player 1', 93, 10, 3)
+>>> player_1.heal()
+100
+>>> player_1 = RPGCharacter('player 1', 100, 10, 3)
+>>> player_1.gain_exp(1100)
+>>> player_1.exp
+100
+>>> player_1.level
+5
+>>> player_1 = RPGCharacter('player 1', 100, 10, 3)
+>>> player_1.level_up()
+(2, 120, 15, 8)
+>>> player_1 = RPGCharacter('player 1', 100, 10, 3)
+>>> player_1.is_alive()
+True

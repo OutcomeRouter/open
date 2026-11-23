@@ -1,0 +1,5 @@
+import math
+from solution import *
+
+assert math.isclose(volume_cone(5,12), 314.15926535897927, rel_tol=0.001)
+print('ok')

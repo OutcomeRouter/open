@@ -1,0 +1,19 @@
+# Imported from Inspect evals: MBPP/391
+type = "code"
+task = "Write a function to convert more than one list to nested dictionary.\n\nWrite it in solution.py. The function name and argument order must match this example: `assert convert_list_dictionary([\"S001\", \"S002\", \"S003\", \"S004\"],[\"Adina Park\", \"Leyton Marsh\", \"Duncan Boyle\", \"Saim Richards\"] ,[85, 98, 89, 92])==[{'S001': {'Adina Park': 85}}, {'S002': {'Leyton Marsh': 98}}, {'S003': {'Duncan Boyle': 89}}, {'S004': {'Saim Richards': 92}}]`. Use only the Python standard library."
+workdir = "work"
+deadline_minutes = 15
+max_attempts = 3
+attempt_timeout_minutes = 7
+protect = ["test_example.py"]
+
+[[checks]]
+name = "the example passes"
+level = "tested"
+cmd = "python3 test_example.py"
+
+[[checks]]
+name = "MBPP/391 hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

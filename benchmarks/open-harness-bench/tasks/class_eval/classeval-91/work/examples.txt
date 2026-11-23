@@ -1,0 +1,9 @@
+>>> from solution import *
+>>> url_path = UrlPath()
+>>> url_path.add('foo')
+>>> url_path.add('bar')
+>>> url_path = UrlPath()
+>>> url_path.parse('/foo/bar/', 'utf-8')
+>>> url_path = UrlPath()
+>>> url_path.fix_path('/foo/bar/')
+'foo/bar'

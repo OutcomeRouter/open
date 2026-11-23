@@ -1,0 +1,27 @@
+# A tiny task the demo agents can attempt, so you can see routing work.
+type = "code"
+task = """
+Implement fizzbuzz(n) in fizzbuzz.py: return "Fizz" for multiples of 3,
+"Buzz" for multiples of 5, "FizzBuzz" for multiples of both, else str(n).
+"""
+workdir = "work"
+deadline_minutes = 10
+max_attempts = 3
+attempt_timeout_minutes = 5
+protect = ["test_fizzbuzz.py"]  # restored before checks, so agents cannot weaken the tests
+
+[[checks]]
+name = "unit tests pass"
+level = "tested"
+cmd = "python3 -m unittest -q test_fizzbuzz"
+
+[[checks]]
+name = "first 15 values are exact"
+level = "verified"
+cmd = """python3 -c 'import fizzbuzz as f; e=["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"]; assert [f.fizzbuzz(i) for i in range(1,16)]==e'"""
+
+[[checks]]
+name = "large inputs"
+level = "tested"
+withheld = true
+cmd = """python3 -c 'import fizzbuzz as f; assert f.fizzbuzz(300)=="FizzBuzz" and f.fizzbuzz(301)=="301" and f.fizzbuzz(999)=="Fizz"'"""

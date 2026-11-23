@@ -1,0 +1,22 @@
+>>> from solution import *
+>>> statistics3 = Statistics3()
+>>> statistics3.median([1, 2, 3, 4])
+2.5
+>>> statistics3 = Statistics3()
+>>> statistics3.mode([1, 2, 3, 3])
+[3]
+>>> statistics3 = Statistics3()
+>>> statistics3.correlation([1, 2, 3], [4, 5, 6])
+1.0
+>>> statistics3 = Statistics3()
+>>> statistics3.mean([1, 2, 3])
+2.0
+>>> statistics3 = Statistics3()
+>>> statistics3.correlation_matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+[[1.0, 1.0, 1.0], [1.0, 1.0, 1.0], [1.0, 1.0, 1.0]]
+>>> statistics3 = Statistics3()
+>>> statistics3.standard_deviation([1, 2, 3])
+1.0
+>>> statistics3 = Statistics3()
+>>> statistics3.z_score([1, 2, 3, 4])
+[-1.161895003862225, -0.3872983346207417, 0.3872983346207417, 1.161895003862225]

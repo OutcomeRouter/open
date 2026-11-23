@@ -1,0 +1,8 @@
+import os, sys
+sys.path.insert(0, os.getcwd())
+from solution import *
+
+assert sum_range_list([2,1,5,6,8,3,4,9,10,11,8,12], 8, 10) == 29
+assert sum_range_list([2,1,5,6,8,3,4,9,10,11,8,12], 5, 7) == 16
+assert sum_range_list([2,1,5,6,8,3,4,9,10,11,8,12], 7, 10) == 38
+print('ok')

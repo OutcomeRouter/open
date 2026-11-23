@@ -1,0 +1,4 @@
+from solution import *
+
+assert is_Sum_Of_Powers_Of_Two(10) == True
+print('ok')

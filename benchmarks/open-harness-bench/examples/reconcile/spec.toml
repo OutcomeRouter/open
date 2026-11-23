@@ -1,0 +1,27 @@
+# A small reconciliation for real agents (the demo agents only know FizzBuzz).
+type = "reconciliation"
+task = """
+Match each invoice in invoices.csv to a payment in bank.csv. Write matches.csv
+with columns invoice_id,bank_date,status where status is "matched",
+"amount_mismatch" or "unpaid". Write exceptions.md explaining every invoice that
+is not "matched", one line each.
+"""
+workdir = "work"
+deadline_minutes = 30
+max_attempts = 3
+
+[[checks]]
+name = "matches.csv has one row per invoice"
+level = "verified"
+cmd = """python3 -c 'import csv; r=list(csv.DictReader(open("matches.csv"))); assert sorted(x["invoice_id"] for x in r)==["INV-1001","INV-1002","INV-1003","INV-1004","INV-1005"]'"""
+
+[[checks]]
+name = "statuses are right"
+level = "verified"
+cmd = """python3 -c 'import csv; s={x["invoice_id"]:x["status"] for x in csv.DictReader(open("matches.csv"))}; assert s=={"INV-1001":"matched","INV-1002":"matched","INV-1003":"amount_mismatch","INV-1004":"unpaid","INV-1005":"matched"}, s'"""
+
+[[checks]]
+name = "every exception is explained"
+level = "tested"
+withheld = true
+cmd = "grep -q INV-1003 exceptions.md && grep -q INV-1004 exceptions.md"

@@ -1,0 +1,7 @@
+>>> from solution import *
+>>> fizz_buzz(50)
+0
+>>> fizz_buzz(78)
+2
+>>> fizz_buzz(79)
+3

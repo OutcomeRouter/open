@@ -1,0 +1,19 @@
+# Imported from Inspect evals: MBPP/232
+type = "code"
+task = "Write a function that takes in a list and an integer n and returns a list containing the n largest items from the list.\n\nWrite it in solution.py. The function name and argument order must match this example: `assert set(larg_nnum([10, 20, 50, 70, 90, 20, 50, 40, 60, 80, 100],2))==set([100,90])`. Use only the Python standard library."
+workdir = "work"
+deadline_minutes = 15
+max_attempts = 3
+attempt_timeout_minutes = 7
+protect = ["test_example.py"]
+
+[[checks]]
+name = "the example passes"
+level = "tested"
+cmd = "python3 test_example.py"
+
+[[checks]]
+name = "MBPP/232 hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

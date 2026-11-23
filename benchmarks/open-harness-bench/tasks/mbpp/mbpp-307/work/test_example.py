@@ -1,0 +1,4 @@
+from solution import *
+
+assert colon_tuplex(("HELLO", 5, [], True) ,2,50)==("HELLO", 5, [50], True)
+print('ok')

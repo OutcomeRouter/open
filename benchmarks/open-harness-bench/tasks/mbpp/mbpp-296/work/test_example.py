@@ -1,0 +1,4 @@
+from solution import *
+
+assert get_Inv_Count([1,20,6,4,5]) == 5
+print('ok')

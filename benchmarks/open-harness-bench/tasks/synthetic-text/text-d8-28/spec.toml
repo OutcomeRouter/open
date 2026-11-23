@@ -1,0 +1,21 @@
+# Synthetic task (tools/gen_tasks.py --family text --seed 1)
+difficulty = 8
+family = "text"
+type = "synthetic-text"
+task = "Write solution.py with transform(s: str) -> str that applies these steps, in this order:\n\n1. If the string is longer than 40 characters, keep the first 37 and add '...'.\n2. Capitalise the first letter of every space-separated word that is longer than 3 characters (only the first character changes; split on single spaces).\n3. Collapse every run of the same character repeated three or more times to exactly two of it.\n4. Strip leading and trailing whitespace.\n5. Replace every run of whitespace with a single space.\n6. Convert to lowercase.\n7. Reverse the characters of each space-separated word, keeping the words in order. Words are separated by single spaces; keep empty words between consecutive spaces.\n8. Sort the space-separated words by length, then alphabetically (split on single spaces, keep empty words).\n\nUse only the Python standard library."
+workdir = "work"
+deadline_minutes = 15
+max_attempts = 3
+attempt_timeout_minutes = 7
+protect = ["test_examples.py"]
+
+[[checks]]
+name = "the examples pass"
+level = "tested"
+cmd = "python3 test_examples.py"
+
+[[checks]]
+name = "synthetic/text hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

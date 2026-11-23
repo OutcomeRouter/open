@@ -1,0 +1,19 @@
+# Imported from Inspect evals: ClassEval_88
+type = "code-class"
+task = "Implement every method of `TriCalculator` in solution.py so it does what its docstrings say. Keep the class name, method names and signatures. Use only the Python standard library and the imports already in the file."
+workdir = "work"
+deadline_minutes = 30
+max_attempts = 3
+attempt_timeout_minutes = 15
+protect = ["examples.txt"]
+
+[[checks]]
+name = "docstring examples pass"
+level = "tested"
+cmd = "python3 -m doctest examples.txt"
+
+[[checks]]
+name = "ClassEval_88 hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

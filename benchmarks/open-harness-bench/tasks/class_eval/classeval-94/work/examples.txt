@@ -1,0 +1,27 @@
+>>> from solution import *
+>>> vendingMachine = VendingMachine()
+>>> vendingMachine.add_item('Coke', 1.25, 10)
+>>> vendingMachine.inventory
+{'Coke': {'price': 1.25, 'quantity': 10}}
+>>> vendingMachine = VendingMachine()
+>>> vendingMachine.insert_coin(1.25)
+1.25
+>>> vendingMachine = VendingMachine()
+>>> vendingMachine.inventory = {'Coke': {'price': 1.25, 'quantity': 10}}
+>>> vendingMachine.balance = 1.25
+>>> vendingMachine.purchase_item('Coke')
+0.0
+>>> vendingMachine.purchase_item('Pizza')
+False
+>>> vendingMachine = VendingMachine()
+>>> vendingMachine.inventory = {'Coke': {'price': 1.25, 'quantity': 10}}
+>>> vendingMachine.restock_item('Coke', 10)
+True
+>>> vendingMachine.restock_item('Pizza', 10)
+False
+>>> vendingMachine = VendingMachine()
+>>> vendingMachine.display_items()
+False
+>>> vendingMachine.inventory = {'Coke': {'price': 1.25, 'quantity': 10} }
+>>> vendingMachine.display_items()
+'Coke - $1.25 [10]'

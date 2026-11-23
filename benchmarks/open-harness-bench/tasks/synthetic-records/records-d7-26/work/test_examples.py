@@ -1,0 +1,6 @@
+from solution import *
+
+assert query([{'id': 21, 'name': 'fay', 'status': 'closed', 'region': 'apac', 'amount': 82}, {'id': 80, 'name': 'fay', 'status': 'closed', 'region': 'us', 'amount': 113}, {'id': 29, 'name': 'cy', 'status': 'closed', 'region': 'apac', 'amount': 18}, {'id': 35, 'name': 'cy', 'status': 'paused', 'region': 'us', 'amount': 132}, {'id': 61, 'name': 'dee', 'status': 'active', 'region': 'apac', 'amount': 155}, {'id': 83, 'name': 'fay', 'status': 'closed', 'region': 'us', 'amount': 71}, {'id': 68, 'name': 'cy', 'status': 'closed', 'region': 'apac', 'amount': 62}, {'id': 67, 'name': 'ana', 'status': 'active', 'region': 'us', 'amount': 72}, {'id': 23, 'name': 'bo', 'status': 'active', 'region': 'apac', 'amount': 93}]) == []
+assert query([{'id': 83, 'name': 'cy', 'status': 'active', 'region': 'apac', 'amount': 69}]) == []
+assert query([{'id': 0, 'name': 'eli', 'status': 'paused', 'region': 'us', 'amount': 47}, {'id': 45, 'name': 'fay', 'status': 'active', 'region': 'eu', 'amount': 93}, {'id': 67, 'name': 'fay', 'status': 'closed', 'region': 'apac', 'amount': 143}, {'id': 84, 'name': 'ana', 'status': 'active', 'region': 'eu', 'amount': 23}, {'id': 38, 'name': 'ana', 'status': 'paused', 'region': 'eu', 'amount': 14}]) == [{'id': 45, 'name': 'fay', 'status': 'active', 'region': 'eu', 'amount': 93, 'tier': 'silver'}]
+print('ok')

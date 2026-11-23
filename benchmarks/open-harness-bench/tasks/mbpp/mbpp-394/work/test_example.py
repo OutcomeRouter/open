@@ -1,0 +1,4 @@
+from solution import *
+
+assert check_distinct((1, 4, 5, 6, 1, 4)) == False
+print('ok')

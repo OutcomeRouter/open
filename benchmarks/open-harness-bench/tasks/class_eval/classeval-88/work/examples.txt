@@ -1,0 +1,12 @@
+>>> from solution import *
+>>> tricalculator = TriCalculator()
+>>> tricalculator.cos(60)
+0.5
+>>> tricalculator.factorial(5)
+120
+>>> tricalculator.taylor(60, 50)
+0.5000000000000001
+>>> tricalculator.sin(30)
+0.5
+>>> tricalculator.tan(45)
+1.0

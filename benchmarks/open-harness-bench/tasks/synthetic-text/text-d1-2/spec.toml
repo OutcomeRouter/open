@@ -1,0 +1,21 @@
+# Synthetic task (tools/gen_tasks.py --family text --seed 1)
+difficulty = 1
+family = "text"
+type = "synthetic-text"
+task = "Write solution.py with transform(s: str) -> str that applies these steps, in this order:\n\n1. Convert to uppercase.\n\nUse only the Python standard library."
+workdir = "work"
+deadline_minutes = 15
+max_attempts = 3
+attempt_timeout_minutes = 7
+protect = ["test_examples.py"]
+
+[[checks]]
+name = "the examples pass"
+level = "tested"
+cmd = "python3 test_examples.py"
+
+[[checks]]
+name = "synthetic/text hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

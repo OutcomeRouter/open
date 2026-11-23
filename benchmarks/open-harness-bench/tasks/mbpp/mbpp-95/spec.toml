@@ -1,0 +1,19 @@
+# Imported from Inspect evals: MBPP/95
+type = "code"
+task = "Write a python function to find the length of the smallest list in a list of lists.\n\nWrite it in solution.py. The function name and argument order must match this example: `assert Find_Min_Length([[1],[1,2]]) == 1`. Use only the Python standard library."
+workdir = "work"
+deadline_minutes = 15
+max_attempts = 3
+attempt_timeout_minutes = 7
+protect = ["test_example.py"]
+
+[[checks]]
+name = "the example passes"
+level = "tested"
+cmd = "python3 test_example.py"
+
+[[checks]]
+name = "MBPP/95 hidden tests"
+level = "tested"
+withheld = true
+cmd = "python3 {spec_dir}/checks/hidden.py"

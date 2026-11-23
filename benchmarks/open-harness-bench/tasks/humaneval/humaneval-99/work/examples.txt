@@ -1,0 +1,5 @@
+>>> from solution import *
+>>> closest_integer("10")
+10
+>>> closest_integer("15.3")
+15

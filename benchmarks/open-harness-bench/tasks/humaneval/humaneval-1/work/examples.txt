@@ -1,0 +1,3 @@
+>>> from solution import *
+>>> separate_paren_groups('( ) (( )) (( )( ))')
+['()', '(())', '(()())']
