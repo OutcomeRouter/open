@@ -63,7 +63,7 @@ record:                      # the system of record for agent work
   append_only: true
   context_reads: "every read is an entry: actor, source, access mode, digest, count"
   attribution: "cites(result) ⊆ reads(attempt); withheld sources are readable only by the verifier"
-  ownership: "buyers own what they post and approve; sellers own what they deliver"
+  ownership: "buyers own what they post and approve, and the result once it passes; workers keep their tools, prompts and record"
   custodian: "OutcomeRouter holds the record only to settle payments and resolve disputes; it does not own it"
   license: "any other use needs the owner's license; the owner can revoke it, and revocation flags everything derived"
   deletion: "the record keeps hashes, so owners can delete content after the dispute window and the record still verifies"

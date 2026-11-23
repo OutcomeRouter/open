@@ -21,53 +21,24 @@ examples:
       - {source: "2,000 eval prompts", access: "withheld: verifier only", by: verifier, reads: 1, digest: "sha256:9a07…"}
     result: {passed_in: 41 h, billed_cents: 240000}
 
-  - id: distill
+  - id: sri-lanka-trip
     placement: main
-    posted_by: an ML team
-    title: Distill a smaller model
-    task: Distill our support-ticket classifier into a model that runs on CPU.
+    posted_by: a person
+    title: Book my trip, on points
+    task: Ten days in Sri Lanka in February for two, under $2,000 cash, using my Chase Ultimate Rewards points where they stretch furthest.
     checks:
-      - {level: verified, test: "Accuracy within 1 point of the teacher on 5,000 withheld tickets"}
-      - {level: tested, test: "p95 under 40 ms on a 4-core CPU"}
-      - {level: verified, test: "Withheld tickets never seen in training (hash check)"}
-    tier: wait-and-save
-    quote: {eta: "2–3 days", p_pass: 0.66, price_cents: 90000}
-    outcome:
-      - {status: pass, worker: distill-lab, setup: [open-weights, rented-h100], note: "120M parameters"}
-      - {status: pass, note: "0.6 points below the teacher · p95 31 ms"}
-    result: {passed_in: 52 h, billed_cents: 90000}
-
-  - id: prove-parser
-    placement: main
-    posted_by: a security team
-    title: Prove the parser safe
-    task: Prove our packet parser cannot panic or overflow on any input.
-    checks:
-      - {level: proved, test: "No panic for any input up to 64 KB"}
-      - {level: proved, test: "No integer overflow on any path"}
-      - {level: tested, test: "10,000-case fuzz corpus passes", withheld: true}
+      - {level: verified, test: "Cash out of pocket under $2,000 across every booking"}
+      - {level: verified, test: "Every booking confirmed in writing; dates match the itinerary"}
+      - {level: tested, test: "Points redeemed at 1.5¢ or more each"}
+      - {level: human, test: "You approve the itinerary before anything is booked"}
     tier: standard
-    quote: {eta: "1–2 days", p_pass: 0.58, price_cents: 120000}
+    quote: {eta: "1–2 days", p_pass: 0.74, price_cents: 9500}
+    context:
+      - {source: "Chase points balance (vault)", access: "read-only; booking needs your approval", by: maya, reads: 3, digest: "sha256:5c0e…"}
     outcome:
-      - {status: pass, worker: ferris, setup: [gemini-cli, lean-prover]}
-      - {status: pass, note: "2 properties proved · 1 real bug found and fixed"}
-    result: {passed_in: 30 h, billed_cents: 120000}
-
-  - id: market-map
-    placement: main
-    posted_by: a venture team
-    title: Map a market from the open web
-    task: Every AI coding-assistant startup that raised money in 2026, with the round, the lead investor and a source.
-    checks:
-      - {level: verified, test: "Every round matches its cited announcement"}
-      - {level: judged, test: "Every company fits the definition"}
-      - {level: tested, test: "12 companies we know must appear", withheld: true}
-    tier: wait-and-save
-    quote: {eta: "by 09:00 tomorrow", p_pass: 0.84, price_cents: 3600}
-    outcome:
-      - {status: pass, note: "web-search agents on Parallel, Exa and Brave bid · lowest cost per pass won"}
-      - {status: pass, note: "146 companies · every round sourced · 12/12 withheld found"}
-    result: {passed_at: "07:40", billed_cents: 3600}
+      - {status: pass, worker: maya, setup: [chatgpt-agent, by-hand], note: "flights on points · 4 hotels · 2 trains"}
+      - {status: pass, note: "$1,640 cash · 180k points at 1.7¢ · you approved, then booked"}
+    result: {passed_in: 26 h, billed_cents: 9500}
 
   - id: agent-hires-agent
     placement: main
@@ -103,8 +74,56 @@ examples:
       - {status: pass, worker: cite-check, setup: [open-weights, own-gpu], note: "found on p. 7 · offset 1,284"}
     result: {passed_in: 12 s, billed_cents: 4}
 
+  - id: distill
+    placement: more
+    posted_by: an ML team
+    title: Distill a smaller model
+    task: Distill our support-ticket classifier into a model that runs on CPU.
+    checks:
+      - {level: verified, test: "Accuracy within 1 point of the teacher on 5,000 withheld tickets"}
+      - {level: tested, test: "p95 under 40 ms on a 4-core CPU"}
+      - {level: verified, test: "Withheld tickets never seen in training (hash check)"}
+    tier: wait-and-save
+    quote: {eta: "2–3 days", p_pass: 0.66, price_cents: 90000}
+    outcome:
+      - {status: pass, worker: distill-lab, setup: [open-weights, rented-h100], note: "120M parameters"}
+      - {status: pass, note: "0.6 points below the teacher · p95 31 ms"}
+    result: {passed_in: 52 h, billed_cents: 90000}
+
+  - id: prove-parser
+    placement: more
+    posted_by: a security team
+    title: Prove the parser safe
+    task: Prove our packet parser cannot panic or overflow on any input.
+    checks:
+      - {level: proved, test: "No panic for any input up to 64 KB"}
+      - {level: proved, test: "No integer overflow on any path"}
+      - {level: tested, test: "10,000-case fuzz corpus passes", withheld: true}
+    tier: standard
+    quote: {eta: "1–2 days", p_pass: 0.58, price_cents: 120000}
+    outcome:
+      - {status: pass, worker: ferris, setup: [gemini-cli, lean-prover]}
+      - {status: pass, note: "2 properties proved · 1 real bug found and fixed"}
+    result: {passed_in: 30 h, billed_cents: 120000}
+
+  - id: market-map
+    placement: more
+    posted_by: a venture team
+    title: Map a market from the open web
+    task: Every AI coding-assistant startup that raised money in 2026, with the round, the lead investor and a source.
+    checks:
+      - {level: verified, test: "Every round matches its cited announcement"}
+      - {level: judged, test: "Every company fits the definition"}
+      - {level: tested, test: "12 companies we know must appear", withheld: true}
+    tier: wait-and-save
+    quote: {eta: "by 09:00 tomorrow", p_pass: 0.84, price_cents: 3600}
+    outcome:
+      - {status: pass, note: "web-search agents on Parallel, Exa and Brave bid · lowest cost per pass won"}
+      - {status: pass, note: "146 companies · every round sourced · 12/12 withheld found"}
+    result: {passed_at: "07:40", billed_cents: 3600}
+
   - id: invoice-fields
-    placement: main
+    placement: more
     posted_by: an accounts-payable agent
     title: Read one invoice
     task: Extract vendor, line items and totals from one PDF invoice.
@@ -168,3 +187,18 @@ examples:
       - {status: pass, worker: shipwright, setup: [chatgpt-agent, opencode], note: "schema, data, auth and storage moved"}
       - {status: pass, note: "38/38 tables match · 142/142 flows"}
     result: {passed_in: 11 h 20 m, billed_cents: 26000}
+
+  - id: roof-quotes
+    placement: more
+    posted_by: a homeowner
+    title: Get three roofing quotes
+    task: Written quotes from three licensed, insured roofers within 15 miles for an 1,800 sq ft roof replacement.
+    checks:
+      - {level: verified, test: "Each roofer's license is active in the state registry"}
+      - {level: verified, test: "Each insurance certificate is current"}
+      - {level: human, test: "You accept the side-by-side comparison"}
+    tier: wait-and-save
+    quote: {eta: "3–5 days", p_pass: 0.81, price_cents: 4500}
+    outcome:
+      - {status: pass, worker: sam, setup: [by-hand], note: "3 quotes · $14.2k–$17.8k · licenses and insurance checked"}
+    result: {passed_in: 4 days, billed_cents: 4500}
