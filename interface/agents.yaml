@@ -43,12 +43,12 @@ verification:
   model: https://outcomerouter.ai/formal/Settlement.tla
   results: https://outcomerouter.ai/formal/results.txt
 
-benchmark:                   # internal estimate
+benchmark:                   # estimate
   metric: cost per passing result
-  vs_top_ranked_agent: "about 0.5x"
-  vs_perfect_knowledge_router: "within 5%"
-  source: internal simulation
-  status: figures under review
+  vs_strongest_model: "about 0.45x at the same pass rate"
+  basis: 99 recorded attempts, 16 tasks, 5 task types; per-attempt prices are estimates
+  modelled_market: "within 5% of a perfect-knowledge router"
+  status: under review for data quality
 open_harness_bench:
   repo: "https://github.com/OutcomeRouter/open/tree/main/benchmarks/open-harness-bench"
   tasks: 539
