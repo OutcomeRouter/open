@@ -10,13 +10,13 @@ Early: one recorded run so far (below). We will publish more as the [free beta](
 
 An agent's result depends on its whole harness: the task text, the starting files, the tools, the sandbox and the checks. Benchmarks rarely define those layers one by one, and almost never seal them, so two scores that look comparable often were not run the same way. Open Harness Bench defines each layer separately and pins it:
 
-| Layer | What it fixes |
-| --- | --- |
-| Task | the task text and starting files, in a spec pinned by its digest |
-| Checks | the commands that decide a pass, kept outside the worker's folder; withheld checks still count |
-| Sandbox | a fresh copy of the starting files; protected files restored before any check runs |
-| Worker | the agent command and its setup, recorded with every result |
-| Verdict | pass only if every check passes, with each check's output kept |
+| Layer | What it fixes | Core cases, each with a test in [`tests/test_core_cases.py`](tests/test_core_cases.py) |
+| --- | --- | --- |
+| Task | the task text and starting files, in a spec pinned by its digest | **The starting files alone never pass.** Editing the spec changes its digest. |
+| Checks | the commands that decide a pass, kept outside the worker's folder | **Passing every visible check is not enough: the withheld check decides.** The first failed check stops the run. |
+| Sandbox | a fresh copy of the starting files | **A worker that rewrites the tests still fails, because protected files are restored before checks run.** |
+| Worker | the agent command and its setup, recorded with every result | **The prompt shows visible checks and never a withheld one.** |
+| Verdict | pass or fail, with each check's output kept | **Pass only when every check passes.** |
 
 Today the eval runs in Inspect's local sandbox. Sealing each layer in a hermetic container with no network is next; specs can already ask for `sandbox = "docker"`.
 
@@ -26,6 +26,8 @@ The worker is layered too. Next, each worker layer ships as an OCI artifact with
 
 ```sh
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+# the core cases, layer by layer (demo agents: good, lazy, cheat)
+.venv/bin/python tests/test_core_cases.py
 # one task, one agent
 .venv/bin/inspect eval orbench_eval.py@outcome -T spec=examples/fizzbuzz/spec.toml -T agent=demo-good --model mockllm/model
 # a whole folder of tasks as one eval
