@@ -26,6 +26,7 @@ rules:
   route:   "argmin over workers with eta ≤ deadline of price_w / p_pass_w(contract)"
   score:   "(q_w − [pass])²   # Brier: state your p_pass honestly"
   split:   "price = work + Σ authors + fee"
+  ratchet: "promote check k iff it passes every known-good result and fails some known-bad one; checks are only added, so Pass(K_t+1) ⊆ Pass(K_t) and known-good results keep passing"
   pass_at_k: "1 − ∏_i (1 − p_pass_wi)   # attempts in order; recalibrated, since hard tasks defeat workers together"
   plan:    "min Σ_i price_wi ∏_{j<i}(1 − p_pass_wj)  s.t.  pass_at_k ≥ target (0.9 default), Σ eta ≤ deadline, Σ price ≤ budget"
 
@@ -60,8 +61,15 @@ record:                      # the system of record for agent work
   holds: [contract, approval, quote, bid, result, verdict, payment]
   each_entry: {actor: identity, at: time, hash: sha256}
   append_only: true
+  ownership: "buyers own what they post and approve; sellers own what they deliver"
+  custodian: "OutcomeRouter holds the record only to settle payments and resolve disputes; it does not own it"
+  license: "any other use needs the owner's license; the owner can revoke it, and revocation flags everything derived"
+  deletion: "the record keeps hashes, so owners can delete content after the dispute window and the record still verifies"
   yours: export specs, checks, logs and your track record as plain files
   training: only if both sides opt in; contributors share the revenue
+  hash_chain: "e_n = (actor, action, H(payload), t, h_(n-1)); h_n = H(e_n)   # edits to history show"
+  labels: "L(derived) = ∪ L(inputs); send(y, s) iff L(y) ⊆ clearance(s)"
+  retract: "retract(x) ⇒ flag every result, check and model derived from x"
   capital: a calibrated pass rate and settled receivables are records lenders and insurers can underwrite (planned)
 
 endpoints:
