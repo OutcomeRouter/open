@@ -68,7 +68,7 @@ One run, 14 tasks (MBPP and ClassEval), one attempt each:
 | claude-sonnet | 100% (14/14) | $0.60 |
 | claude-haiku | 93% (13/14) | $0.22 |
 
-Small sample; figures under review.
+Small sample. Under review for data quality.
 
 ## Other checks
 
