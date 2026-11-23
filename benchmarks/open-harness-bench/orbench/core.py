@@ -1,13 +1,13 @@
 """Core types for Open Harness Bench: task specs, checks, agents and prompts.
 
-A task is a folder with a spec.toml, starting files and checks. Every check runs on every
-result, withheld ones included. This package has no routing, pricing or accounts."""
+A task contains a spec, starting files and checks. The first failed check ends the attempt. This package has no routing, pricing or accounts."""
 
 from __future__ import annotations
 
 import hashlib
 import json
 import os
+import shlex
 import sys
 import tomllib
 from dataclasses import dataclass, field
@@ -27,17 +27,17 @@ DEFAULT_CONFIG = f'''# Benchmark agents. Each agent is a shell command run insid
 
 [[agents]]
 name = "demo-good"
-cmd = "python3 {{demo}}/good.py {{prompt_file}}"
+cmd = 'python3 "{{demo}}/good.py" "{{prompt_file}}"'
 price_usd = 0.40
 
 [[agents]]
 name = "demo-flaky"
-cmd = "python3 {{demo}}/flaky.py {{prompt_file}}"
+cmd = 'python3 "{{demo}}/flaky.py" "{{prompt_file}}"'
 price_usd = 0.15
 
 [[agents]]
 name = "demo-lazy"
-cmd = "python3 {{demo}}/lazy.py {{prompt_file}}"
+cmd = 'python3 "{{demo}}/lazy.py" "{{prompt_file}}"'
 price_usd = 0.05
 
 # Real agents: uncomment and set a price (what one attempt costs you, pass or fail).
@@ -65,10 +65,6 @@ price_usd = 0.05
 
 
 @dataclass
-
-
-
-@dataclass
 class Check:
     name: str
     cmd: str
@@ -89,7 +85,7 @@ class Spec:
     max_attempts: int = 3
     timeout_min: float = 30
     milestones: list[dict] = field(default_factory=list)  # [{name, task}], run in order
-    sandbox: str = "local"  # "docker" runs checks in a container with no network
+    sandbox: str = "local"
     image: str = "python:3.12-slim"
     protect: list[str] = field(default_factory=list)  # files restored from workdir before checks
     companions: list[dict] = field(default_factory=list)  # [{name, url}] or [{name, command}] MCP servers
@@ -115,6 +111,7 @@ class Agent:
     contact: str = ""  # how to reach a person who takes tasks; passed to OR_NOTIFY_CMD
     timeout_minutes: float = 0  # this agent's own time limit per attempt (humans need longer); 0 = the spec's
     data_consent: bool = False  # this agent (or person) allows its graded work records to train models
+    layers: dict[str, str] = field(default_factory=dict)  # declared experiment labels
     members: list = field(default_factory=list)  # a team: [{name, kind: "agent"|"person", share}], one record together
 
 
@@ -192,6 +189,8 @@ def load_agents() -> list[Agent]:
         cfg.write_text(DEFAULT_CONFIG)
     agents = [Agent(**a) for a in tomllib.loads(cfg.read_text()).get("agents", [])]
     for a in agents:
+        if not isinstance(a.layers, dict) or not all(isinstance(v, str) for v in a.layers.values()):
+            sys.exit(f"agent {a.name!r}: layers must map names to strings")
         if a.members:
             if any(m.get("kind") not in ("agent", "person") or "name" not in m for m in a.members):
                 sys.exit(f"team {a.name!r}: each member needs a name and kind = agent or person")
@@ -205,10 +204,7 @@ def load_agents() -> list[Agent]:
         if a.kind not in ("process", "human") or a.pay not in ("per-attempt", "on-pass"):
             sys.exit(f"agent {a.name!r}: kind must be process or human, pay must be per-attempt or on-pass")
         if a.kind == "human":
-            hours = (a.timeout_minutes or 60) / 60
-            if a.price_usd / hours < PEOPLE_MIN_HOURLY:
-                sys.exit(f"agent {a.name!r}: a person's price must be at least ${PEOPLE_MIN_HOURLY:.0f} per hour of "
-                         f"their time limit (${PEOPLE_MIN_HOURLY * hours:.2f} for {hours:g} h)")
+            sys.exit(f"agent {a.name!r}: this benchmark runs process workers only")
         if a.kind == "process" and not a.cmd:
             sys.exit(f"agent {a.name!r}: a process agent needs a cmd")
         if not a.price_usd > 0:
@@ -256,6 +252,6 @@ def prompt_for(spec: Spec, stage: str = "") -> str:
 
 def expand(cmd: str, spec: Spec, spec_dir: str | None = None) -> str:
     """Fill {spec_dir}: the folder holding spec.toml, where withheld check files live outside the workdir."""
-    return cmd.replace("{spec_dir}", spec_dir or str(spec.path.parent))
+    return cmd.replace("{spec_dir}", shlex.quote(spec_dir or str(spec.path.parent)))
 
 

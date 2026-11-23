@@ -1,5 +1,5 @@
 """Core semantic cases, one class per harness layer. Each test names the case the README lists."""
-import glob, json, os, subprocess, sys, tempfile, unittest, zipfile
+import os, subprocess, sys, tempfile, unittest
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
@@ -26,17 +26,19 @@ price_usd = 0.01
 """
 
 def run(agent, spec=SPEC):
-    inspect = ROOT / ".venv/bin/inspect"
+    inspect = Path(sys.executable).with_name("inspect")
     if not inspect.exists():
-        raise unittest.SkipTest("inspect not installed")
+        raise RuntimeError("Install requirements.txt in the active Python environment")
     home = Path(tempfile.mkdtemp())
     (home / "agents.toml").write_text(AGENTS)
     subprocess.run([str(inspect), "eval", "orbench_eval.py@outcome", "-T", f"spec={spec}", "-T", f"agent={agent}",
                     "--model", "mockllm/model", "--log-dir", str(home / "logs"), "--display", "none"],
                    cwd=ROOT, env=dict(os.environ, ORBENCH_HOME=str(home)), check=True, capture_output=True)
-    z = zipfile.ZipFile(sorted(glob.glob(str(home / "logs/*.eval")))[-1])
-    sample = json.loads(z.read([n for n in z.namelist() if n.startswith("samples/")][0]))
-    return next(iter(sample["scores"].values()))["metadata"]
+    from inspect_ai.log import read_eval_log
+    log = read_eval_log(next((home / "logs").glob("*.eval")))
+    if log.status != "success":
+        raise RuntimeError(f"Inspect run ended with status {log.status}")
+    return next(iter(log.samples[0].scores.values())).metadata
 
 class Task(unittest.TestCase):
     def test_starting_files_fail(self):

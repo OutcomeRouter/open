@@ -1,0 +1,56 @@
+{
+  "all_valid": true,
+  "collections": {
+    "class_eval": {
+      "failed": 0,
+      "reference_checked_ok": 0,
+      "reference_checked_tasks": 0,
+      "stub_only_ok": 85,
+      "stub_only_tasks": 85,
+      "total": 85
+    },
+    "humaneval": {
+      "failed": 0,
+      "reference_checked_ok": 0,
+      "reference_checked_tasks": 0,
+      "stub_only_ok": 164,
+      "stub_only_tasks": 164,
+      "total": 164
+    },
+    "mbpp": {
+      "failed": 0,
+      "reference_checked_ok": 0,
+      "reference_checked_tasks": 0,
+      "stub_only_ok": 200,
+      "stub_only_tasks": 200,
+      "total": 200
+    },
+    "synthetic-ledger": {
+      "failed": 0,
+      "reference_checked_ok": 30,
+      "reference_checked_tasks": 30,
+      "stub_only_ok": 0,
+      "stub_only_tasks": 0,
+      "total": 30
+    },
+    "synthetic-records": {
+      "failed": 0,
+      "reference_checked_ok": 30,
+      "reference_checked_tasks": 30,
+      "stub_only_ok": 0,
+      "stub_only_tasks": 0,
+      "total": 30
+    },
+    "synthetic-text": {
+      "failed": 0,
+      "reference_checked_ok": 30,
+      "reference_checked_tasks": 30,
+      "stub_only_ok": 0,
+      "stub_only_tasks": 0,
+      "total": 30
+    }
+  },
+  "corpus": "tasks",
+  "failures": [],
+  "total_tasks": 539
+}

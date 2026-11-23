@@ -28,6 +28,7 @@ class ClassRegistrationSystem:
         >>> registration_system.register_class(student_name="John", class_name="CS101")
         >>> registration_system.register_class(student_name="John", class_name="CS102")
         ["CS101", "CS102"]
+        """
 
     def get_students_by_major(self, major):
         """

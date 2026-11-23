@@ -128,7 +128,11 @@ def from_class_eval(s) -> Imported:
     md = s.metadata
     cls = md["class_name"]
     test_classes = _list(md["test_classes"])
-    files, visible, protect = examples_check(md["skeleton"])
+    # Three upstream skeletons contain malformed docstring delimiters.
+    skeleton = md["skeleton"].replace('        ”“”', '        """').replace('        “”“', '        """')
+    skeleton = skeleton.replace('        ["CS101", "CS102"]\n\n    def',
+                                '        ["CS101", "CS102"]\n        """\n\n    def')
+    files, visible, protect = examples_check(skeleton)
     runner = ("\nimport unittest as _ut\n_s = _ut.TestSuite()\n"
               + "".join(f"_s.addTests(_ut.defaultTestLoader.loadTestsFromTestCase({t}))\n" for t in test_classes)
               + "_r = _ut.TextTestRunner(verbosity=1).run(_s)\nsys.exit(0 if _r.wasSuccessful() else 1)")
@@ -137,7 +141,7 @@ def from_class_eval(s) -> Imported:
         task=(f"Implement every method of `{cls}` in solution.py so it does what its docstrings say. "
               "Keep the class name, method names and signatures. Use only the Python standard library "
               "and the imports already in the file."),
-        files={"solution.py": md["skeleton"].rstrip() + "\n", **files},
+        files={"solution.py": skeleton.rstrip() + "\n", **files},
         visible=visible, protect=protect,
         hidden=f"from solution import *\n\n{md['test']}\n{runner}",
         minutes=30,
@@ -163,6 +167,7 @@ def without_examples(t: Imported) -> Imported:
 def validate(spec_path: Path, files: dict | None) -> tuple[bool, str]:
     """Run the task's checks on its starting files (must fail) and on the reference (must pass).
     A task whose reference fails, or whose stub already passes, is broken and should not be used."""
+    import shlex
     import shutil
     import subprocess
     import tempfile
@@ -171,7 +176,7 @@ def validate(spec_path: Path, files: dict | None) -> tuple[bool, str]:
     cmds = []
     import tomllib
     for c in tomllib.loads(spec_path.read_text())["checks"]:
-        cmds.append(c["cmd"].replace("{spec_dir}", str(spec_dir)))
+        cmds.append(c["cmd"].replace("{spec_dir}", shlex.quote(str(spec_dir))))
 
     def all_pass(overlay: dict | None) -> bool:
         with tempfile.TemporaryDirectory() as t:

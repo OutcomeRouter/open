@@ -1,0 +1,1633 @@
+{
+  "experiment": "synthetic-selector-v1",
+  "counts": {
+    "pairs": 90,
+    "visible_only_passes": 46,
+    "repeat_example_passes": 46,
+    "with_probe_passes": 89,
+    "gains": 43,
+    "losses": 0
+  },
+  "tasks": [
+    {
+      "task": "ledger-d1-0",
+      "family": "ledger",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d1-1",
+      "family": "ledger",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d1-2",
+      "family": "ledger",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d1-3",
+      "family": "ledger",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d2-4",
+      "family": "ledger",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d2-5",
+      "family": "ledger",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d2-6",
+      "family": "ledger",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d2-7",
+      "family": "ledger",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d3-10",
+      "family": "ledger",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d3-11",
+      "family": "ledger",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d3-8",
+      "family": "ledger",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d3-9",
+      "family": "ledger",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d4-12",
+      "family": "ledger",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d4-13",
+      "family": "ledger",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d4-14",
+      "family": "ledger",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d5-15",
+      "family": "ledger",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "example_lookup",
+      "visible_only_pass": false,
+      "with_probe_pass": false,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": true,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d5-16",
+      "family": "ledger",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d5-17",
+      "family": "ledger",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d5-18",
+      "family": "ledger",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d6-19",
+      "family": "ledger",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d6-20",
+      "family": "ledger",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d6-21",
+      "family": "ledger",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d6-22",
+      "family": "ledger",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d7-23",
+      "family": "ledger",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d7-24",
+      "family": "ledger",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d7-25",
+      "family": "ledger",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d7-26",
+      "family": "ledger",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d8-27",
+      "family": "ledger",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d8-28",
+      "family": "ledger",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "ledger-d8-29",
+      "family": "ledger",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d1-0",
+      "family": "records",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d1-1",
+      "family": "records",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d1-2",
+      "family": "records",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d1-3",
+      "family": "records",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d2-4",
+      "family": "records",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d2-5",
+      "family": "records",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d2-6",
+      "family": "records",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d2-7",
+      "family": "records",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d3-10",
+      "family": "records",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d3-11",
+      "family": "records",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d3-8",
+      "family": "records",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d3-9",
+      "family": "records",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d4-12",
+      "family": "records",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d4-13",
+      "family": "records",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d4-14",
+      "family": "records",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d5-15",
+      "family": "records",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d5-16",
+      "family": "records",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d5-17",
+      "family": "records",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d5-18",
+      "family": "records",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d6-19",
+      "family": "records",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d6-20",
+      "family": "records",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d6-21",
+      "family": "records",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d6-22",
+      "family": "records",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d7-23",
+      "family": "records",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d7-24",
+      "family": "records",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d7-25",
+      "family": "records",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d7-26",
+      "family": "records",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d8-27",
+      "family": "records",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d8-28",
+      "family": "records",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "records-d8-29",
+      "family": "records",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d1-0",
+      "family": "text",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d1-1",
+      "family": "text",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d1-2",
+      "family": "text",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d1-3",
+      "family": "text",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d2-4",
+      "family": "text",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d2-5",
+      "family": "text",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d2-6",
+      "family": "text",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d2-7",
+      "family": "text",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d3-10",
+      "family": "text",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d3-11",
+      "family": "text",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d3-8",
+      "family": "text",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d3-9",
+      "family": "text",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d4-12",
+      "family": "text",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d4-13",
+      "family": "text",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d4-14",
+      "family": "text",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d5-15",
+      "family": "text",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d5-16",
+      "family": "text",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d5-17",
+      "family": "text",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d5-18",
+      "family": "text",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d6-19",
+      "family": "text",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d6-20",
+      "family": "text",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d6-21",
+      "family": "text",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d6-22",
+      "family": "text",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d7-23",
+      "family": "text",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d7-24",
+      "family": "text",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d7-25",
+      "family": "text",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d7-26",
+      "family": "text",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d8-27",
+      "family": "text",
+      "candidate_order": [
+        "example_lookup",
+        "reference"
+      ],
+      "visible_only": "example_lookup",
+      "with_probe": "reference",
+      "visible_only_pass": false,
+      "with_probe_pass": true,
+      "repeated_example": "example_lookup",
+      "repeated_example_pass": false,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d8-28",
+      "family": "text",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    },
+    {
+      "task": "text-d8-29",
+      "family": "text",
+      "candidate_order": [
+        "reference",
+        "example_lookup"
+      ],
+      "visible_only": "reference",
+      "with_probe": "reference",
+      "visible_only_pass": true,
+      "with_probe_pass": true,
+      "repeated_example": "reference",
+      "repeated_example_pass": true,
+      "fresh_probe_accepts": {
+        "example_lookup": false,
+        "reference": true
+      }
+    }
+  ]
+}
