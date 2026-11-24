@@ -1,0 +1,3 @@
+request.service == grant.service &&
+has(request.cost) && request.cost >= 0 && request.cost <= grant.limit &&
+has(request.until) && request.until <= grant.through

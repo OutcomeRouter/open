@@ -61,9 +61,10 @@ class Owner(AgentBase):
 
 
 class Record:
-    def __init__(self, owner, mode):
+    def __init__(self, owner, mode, allows):
         self.owner = owner
         self.mode = mode
+        self.allows = allows
         self.answers = []
         self.pending = {}
 
@@ -76,7 +77,7 @@ class Record:
             else:
                 fields = answer.metadata["rule"]
                 rule = Rule(**fields) if fields else None
-            if rule and rule.allows(request.metadata):
+            if rule and self.allows(rule, request.metadata):
                 return "allow", "reused"
 
         fields = request.metadata
@@ -111,9 +112,9 @@ class Worker(AgentBase):
         return Msg(self.name, decision, "assistant", metadata={"source": source})
 
 
-async def run(rows, mode, concurrent):
+async def run(rows, mode, concurrent, allows=Rule.allows):
     owner = Owner()
-    record = Record(owner, mode)
+    record = Record(owner, mode, allows)
     events = []
 
     async def act(row):

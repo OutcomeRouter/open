@@ -41,3 +41,5 @@ jobs:
           python -m pip install uv
           uv run --python 3.12 experiments/acme/replay.py --out "$RUNNER_TEMP/acme-swarm.json"
           diff results/acme-swarm.json "$RUNNER_TEMP/acme-swarm.json"
+          uv run --python 3.12 experiments/acme/compare_policies.py --out "$RUNNER_TEMP/acme-policies.json"
+          diff results/acme-policies.json "$RUNNER_TEMP/acme-policies.json"
