@@ -54,7 +54,9 @@ jobs:
           uv run --python 3.12 experiments/acme/late_answers.py --out "$RUNNER_TEMP/late.json"
           diff results/acme-late-answers.json "$RUNNER_TEMP/late.json"
       - name: Verify crash recovery and competing writers
-        run: python experiments/acme/crash_retry.py
+        run: |
+          python experiments/acme/crash_retry.py
+          python experiments/acme/lost_ack.py
       - name: Check clarification invariants and three counterexamples
         working-directory: formal
         run: |
