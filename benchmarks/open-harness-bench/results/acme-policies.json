@@ -1,0 +1,50 @@
+{
+  "Python": {
+    "boundary_cases": 48,
+    "auto_allow": 6,
+    "refer_to_owner": 42,
+    "replays_matched": 8,
+    "burst_interruptions": {
+      "private": 8,
+      "shared_chat": 7,
+      "shared_rule": 7,
+      "shared_rule_and_pending": 5
+    }
+  },
+  "CEL (cel-python)": {
+    "boundary_cases": 48,
+    "auto_allow": 6,
+    "refer_to_owner": 42,
+    "replays_matched": 8,
+    "burst_interruptions": {
+      "private": 8,
+      "shared_chat": 7,
+      "shared_rule": 7,
+      "shared_rule_and_pending": 5
+    }
+  },
+  "Rego (regopy)": {
+    "boundary_cases": 48,
+    "auto_allow": 6,
+    "refer_to_owner": 42,
+    "replays_matched": 8,
+    "burst_interruptions": {
+      "private": 8,
+      "shared_chat": 7,
+      "shared_rule": 7,
+      "shared_rule_and_pending": 5
+    }
+  },
+  "Cedar (cedarpy)": {
+    "boundary_cases": 48,
+    "auto_allow": 6,
+    "refer_to_owner": 42,
+    "replays_matched": 8,
+    "burst_interruptions": {
+      "private": 8,
+      "shared_chat": 7,
+      "shared_rule": 7,
+      "shared_rule_and_pending": 5
+    }
+  }
+}

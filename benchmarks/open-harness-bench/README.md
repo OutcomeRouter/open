@@ -79,6 +79,20 @@ budget = "four calls per task"
 
 The report shows which tasks changed verdict in each direction. It rejects mismatched task sets, epochs, fixture contents, runner versions, and per-attempt time limits. The fixture hash covers the spec, starting files, and files under `checks/`. External tools, API revisions, and actual usage need separate records. The local runner cannot enforce an external agent’s model-call budget.
 
+## When do overlapping requests interrupt the owner?
+
+In the [Acme AgentScope experiment](experiments/acme/replay.py), fresh agents request checkout capacity before a Friday sale. Som approves a service, a dollar limit per change, and an expiry. A Saturday extension needs a new decision. An extension with no cost estimate gets a request for its price.
+
+Run `uv run --python 3.12 experiments/acme/replay.py` here. Each condition gets the same [requests](experiments/acme/requests.json). Agents use a fixed parser for Som’s chat message and an equivalent structured rule. In the burst schedule, private context produced eight questions. Shared chat and a shared rule each produced seven. Waiting for a pending answer with the same service, cost, and end date reduced that to five. The [recorded replay](results/acme-swarm.json) shows who asked, who waited, and which exceptions reached Som.
+
+This is a local, single-process simulation using AgentScope agents and messages, with scripted decisions and no paid model calls. It measures interruptions under two schedules. Language understanding, cloud latency, and actual infrastructure spend require separate tests. [AgentScope paper](https://arxiv.org/abs/2407.17789)
+
+### Does the policy language change the result?
+
+Som’s grant covers checkout capacity through Friday, up to $200 per change. Run `uv run --python 3.12 experiments/acme/compare_policies.py --timing` to compare [CEL, Rego, and Cedar](experiments/acme/policies) with a Python reference. Every evaluator allowed the same six boundary cases and referred the other 42 for owner review. Each reproduced the same decisions and interruptions under both schedules. [Results by evaluator](results/acme-policies.json)
+
+The adapters receive typed inputs. They check an existing grant for one action in one tenant. The replay supplies owner identity and handles pending requests outside the policy engine. Timings include local Python conversion and evaluation through cel-python, regopy, or cedarpy. They exclude network calls and policy loading.
+
 ## Task corpus
 
 | Collection | Tasks | Source |
