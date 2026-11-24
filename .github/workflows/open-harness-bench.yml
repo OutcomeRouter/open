@@ -47,6 +47,8 @@ jobs:
           diff results/acme-swarm.json "$RUNNER_TEMP/acme-swarm.json"
           uv run --python 3.12 experiments/acme/compare_policies.py --out "$RUNNER_TEMP/acme-policies.json"
           diff results/acme-policies.json "$RUNNER_TEMP/acme-policies.json"
+          uv run --python 3.12 experiments/acme/convergence.py --out "$RUNNER_TEMP/convergence.json"
+          diff results/acme-convergence.json "$RUNNER_TEMP/convergence.json"
           uv run --python 3.12 experiments/acme/revision.py --out "$RUNNER_TEMP/acme-revisions.json"
           diff results/acme-revisions.json "$RUNNER_TEMP/acme-revisions.json"
           uv run --python 3.12 experiments/acme/amendment.py --out "$RUNNER_TEMP/acme-amendment.json"
