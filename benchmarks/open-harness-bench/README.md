@@ -91,6 +91,8 @@ This is a local, single-process simulation using AgentScope agents and messages,
 
 Run `uv run --python 3.12 experiments/acme/revision.py` to move Som’s edit before or after each step as Dana reads, hands off, and applies a request. A check at handoff still misses a limit change that arrives before application. Reusing an old refusal can also hold up work Som has since approved. In this replay, reading the latest applicable chat message and reading the current structured rule produced the same decisions without asking Som again. Both assume the final check and action happen together. The fixture uses a fixed chat grammar and a single process. [Results and failing schedules](results/acme-revisions.json)
 
+What happens when the fixed parser misses a replacement? Run `uv run --python 3.12 experiments/acme/amendment.py`. Searching backward can resurrect an obsolete grant. Asking Som to confirm the meaning of a revision lets later workers reuse that answer until the next revision. The structured comparison assumes Som supplied the fields when publishing. [Amendment replay](results/acme-amendment.json)
+
 ### Does the policy language change the result?
 
 Som’s grant covers checkout capacity through Friday, up to $200 per change. Run `uv run --python 3.12 experiments/acme/compare_policies.py --timing` to compare [CEL, Rego, and Cedar](experiments/acme/policies) with a Python reference. Every evaluator allowed the same six boundary cases and referred the other 42 for owner review. Each reproduced the same decisions and interruptions under both schedules. [Results by evaluator](results/acme-policies.json)
