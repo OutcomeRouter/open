@@ -93,6 +93,8 @@ Run `uv run --python 3.12 experiments/acme/revision.py` to move Som’s edit bef
 
 What happens when the fixed parser misses a replacement? Run `uv run --python 3.12 experiments/acme/amendment.py`. Searching backward can resurrect an obsolete grant. Asking Som to confirm the meaning of a revision lets later workers reuse that answer until the next revision. The structured comparison assumes Som supplied the fields when publishing. [Amendment replay](results/acme-amendment.json)
 
+The [late-answer experiment](experiments/acme/late_answers.py) tests reordered and repeated replies across two tenants. Run it with `uv run --python 3.12 experiments/acme/late_answers.py` to reproduce the [counterexamples](results/acme-late-answers.json). The [TLA+ model](../../formal/Clarification.tla) checks scope, revision at commit, and at-most-once application within its bounds. Run `python3 experiments/acme/crash_retry.py` to kill a SQLite writer before and after it commits a local outbox entry and retry under a changed limit.
+
 ### Does the policy language change the result?
 
 Som’s grant covers checkout capacity through Friday, up to $200 per change. Run `uv run --python 3.12 experiments/acme/compare_policies.py --timing` to compare [CEL, Rego, and Cedar](experiments/acme/policies) with a Python reference. Every evaluator allowed the same six boundary cases and referred the other 42 for owner review. Each reproduced the same decisions and interruptions under both schedules. [Results by evaluator](results/acme-policies.json)
