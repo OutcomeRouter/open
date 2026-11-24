@@ -87,6 +87,10 @@ Run `uv run --python 3.12 experiments/acme/replay.py` here. Each condition gets 
 
 This is a local, single-process simulation using AgentScope agents and messages, with scripted decisions and no paid model calls. It measures interruptions under two schedules. Language understanding, cloud latency, and actual infrastructure spend require separate tests. [AgentScope paper](https://arxiv.org/abs/2407.17789)
 
+### What if Som edits the limit while work is queued?
+
+Run `uv run --python 3.12 experiments/acme/revision.py` to move Som’s edit before or after each step as Dana reads, hands off, and applies a request. A check at handoff still misses a limit change that arrives before application. Reusing an old refusal can also hold up work Som has since approved. In this replay, reading the latest applicable chat message and reading the current structured rule produced the same decisions without asking Som again. Both assume the final check and action happen together. The fixture uses a fixed chat grammar and a single process. [Results and failing schedules](results/acme-revisions.json)
+
 ### Does the policy language change the result?
 
 Som’s grant covers checkout capacity through Friday, up to $200 per change. Run `uv run --python 3.12 experiments/acme/compare_policies.py --timing` to compare [CEL, Rego, and Cedar](experiments/acme/policies) with a Python reference. Every evaluator allowed the same six boundary cases and referred the other 42 for owner review. Each reproduced the same decisions and interruptions under both schedules. [Results by evaluator](results/acme-policies.json)
