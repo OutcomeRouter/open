@@ -97,6 +97,14 @@ What happens when the fixed parser misses a replacement? Run `uv run --python 3.
 
 The [late-answer experiment](experiments/acme/late_answers.py) tests reordered and repeated replies across two tenants. Run it with `uv run --python 3.12 experiments/acme/late_answers.py` to reproduce the [counterexamples](results/acme-late-answers.json). The [TLA+ model](../../formal/Clarification.tla) checks scope, revision at commit, and at-most-once application within its bounds. Run `python3 experiments/acme/crash_retry.py` to kill a SQLite writer before and after it commits a local outbox entry and retry under a changed limit.
 
+### Does a tool description change how quickly workers recover?
+
+A local Qwen3-1.7B model chooses one tool at a time after an owner changes a spending limit. One tool asks about the current request. Another, `resolve`, asks for a decision that future workers can reuse. The [experiment](experiments/acme/wording/study.py) compares four descriptions of `resolve`. Follow-up tests vary the descriptions of two competing tools, add a third tool ordering, and give workers the confirmed limit directly. Each wording runs on two amendments with three tool orderings. Recovery starts at the first checkpoint where the limit is confirmed and fresh workers answer all four probes correctly through the last checkpoint. The probes cover costs below, at, and above the limit and a missing price.
+
+None of the 126 live requests across 42 runs elicited the reusable decision. With the original wording the model asked the owner nine times across 18 live requests. Changing both competing descriptions cut that to zero, but produced six unsupported approval proposals. That variant made the expected choice on eight of 24 final probes. In a separate control that supplied the confirmed limit, it scored nine of 24. These are repeated conditions on one model and two fictional amendments. No proposal changed infrastructure.
+
+Inspect the [raw model calls and results](results/acme-wording.json). Run `python3 experiments/acme/wording/study.py results/acme-wording.json` to rescore the saved calls. To generate them again on Apple silicon, use `uv run --python 3.12 experiments/acme/wording/local_model.py --out /tmp/acme-wording.json`. Owner replies are scripted. This measures first tool choices and revision reuse on a three-request stream.
+
 ### Does the policy language change the result?
 
 Som’s grant covers checkout capacity through Friday, up to $200 per change. Run `uv run --python 3.12 experiments/acme/compare_policies.py --timing` to compare [CEL, Rego, and Cedar](experiments/acme/policies) with a Python reference. Every evaluator allowed the same six boundary cases and referred the other 42 for owner review. Each reproduced the same decisions and interruptions under both schedules. [Results by evaluator](results/acme-policies.json)
