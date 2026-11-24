@@ -1,0 +1,47 @@
+{
+  "scoped_revision": {
+    "schedules": 180,
+    "schedules_with_wrong_decisions": 0,
+    "shortest_witness": null
+  },
+  "omit_revision": {
+    "schedules": 180,
+    "schedules_with_wrong_decisions": 180,
+    "shortest_witness": {
+      "prefix": [
+        "amend",
+        "old"
+      ],
+      "tenant": "A",
+      "cost": 80,
+      "expected": "wait",
+      "actual": "allow"
+    }
+  },
+  "omit_scope": {
+    "schedules": 180,
+    "schedules_with_wrong_decisions": 180,
+    "shortest_witness": {
+      "prefix": [
+        "old"
+      ],
+      "tenant": "B",
+      "cost": 80,
+      "expected": "wait",
+      "actual": "allow"
+    }
+  },
+  "omit_owner_check": {
+    "schedules": 180,
+    "schedules_with_wrong_decisions": 60,
+    "shortest_witness": {
+      "prefix": [
+        "wrong_owner"
+      ],
+      "tenant": "A",
+      "cost": 80,
+      "expected": "wait",
+      "actual": "allow"
+    }
+  }
+}
