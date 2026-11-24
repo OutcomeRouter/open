@@ -1,0 +1,250 @@
+{
+  "search_older": {
+    "wrong": 2,
+    "owner_rechecks": 0,
+    "events": [
+      {
+        "limit": 100,
+        "cost": 80,
+        "decision": "allow",
+        "expected": "allow",
+        "asked": 0
+      },
+      {
+        "limit": 100,
+        "cost": 150,
+        "decision": "allow",
+        "expected": "hold",
+        "asked": 0
+      },
+      {
+        "limit": 100,
+        "cost": 250,
+        "decision": "hold",
+        "expected": "hold",
+        "asked": 0
+      },
+      {
+        "limit": 100,
+        "cost": 350,
+        "decision": "hold",
+        "expected": "hold",
+        "asked": 0
+      },
+      {
+        "limit": 300,
+        "cost": 80,
+        "decision": "allow",
+        "expected": "allow",
+        "asked": 0
+      },
+      {
+        "limit": 300,
+        "cost": 150,
+        "decision": "allow",
+        "expected": "allow",
+        "asked": 0
+      },
+      {
+        "limit": 300,
+        "cost": 250,
+        "decision": "hold",
+        "expected": "allow",
+        "asked": 0
+      },
+      {
+        "limit": 300,
+        "cost": 350,
+        "decision": "hold",
+        "expected": "hold",
+        "asked": 0
+      }
+    ]
+  },
+  "ask_per_request": {
+    "wrong": 0,
+    "owner_rechecks": 8,
+    "events": [
+      {
+        "limit": 100,
+        "cost": 80,
+        "decision": "allow",
+        "expected": "allow",
+        "asked": 1
+      },
+      {
+        "limit": 100,
+        "cost": 150,
+        "decision": "hold",
+        "expected": "hold",
+        "asked": 1
+      },
+      {
+        "limit": 100,
+        "cost": 250,
+        "decision": "hold",
+        "expected": "hold",
+        "asked": 1
+      },
+      {
+        "limit": 100,
+        "cost": 350,
+        "decision": "hold",
+        "expected": "hold",
+        "asked": 1
+      },
+      {
+        "limit": 300,
+        "cost": 80,
+        "decision": "allow",
+        "expected": "allow",
+        "asked": 1
+      },
+      {
+        "limit": 300,
+        "cost": 150,
+        "decision": "allow",
+        "expected": "allow",
+        "asked": 1
+      },
+      {
+        "limit": 300,
+        "cost": 250,
+        "decision": "allow",
+        "expected": "allow",
+        "asked": 1
+      },
+      {
+        "limit": 300,
+        "cost": 350,
+        "decision": "hold",
+        "expected": "hold",
+        "asked": 1
+      }
+    ]
+  },
+  "clarify_revision": {
+    "wrong": 0,
+    "owner_rechecks": 2,
+    "events": [
+      {
+        "limit": 100,
+        "cost": 80,
+        "decision": "allow",
+        "expected": "allow",
+        "asked": 1
+      },
+      {
+        "limit": 100,
+        "cost": 150,
+        "decision": "hold",
+        "expected": "hold",
+        "asked": 0
+      },
+      {
+        "limit": 100,
+        "cost": 250,
+        "decision": "hold",
+        "expected": "hold",
+        "asked": 0
+      },
+      {
+        "limit": 100,
+        "cost": 350,
+        "decision": "hold",
+        "expected": "hold",
+        "asked": 0
+      },
+      {
+        "limit": 300,
+        "cost": 80,
+        "decision": "allow",
+        "expected": "allow",
+        "asked": 1
+      },
+      {
+        "limit": 300,
+        "cost": 150,
+        "decision": "allow",
+        "expected": "allow",
+        "asked": 0
+      },
+      {
+        "limit": 300,
+        "cost": 250,
+        "decision": "allow",
+        "expected": "allow",
+        "asked": 0
+      },
+      {
+        "limit": 300,
+        "cost": 350,
+        "decision": "hold",
+        "expected": "hold",
+        "asked": 0
+      }
+    ]
+  },
+  "structured": {
+    "wrong": 0,
+    "owner_rechecks": 0,
+    "events": [
+      {
+        "limit": 100,
+        "cost": 80,
+        "decision": "allow",
+        "expected": "allow",
+        "asked": 0
+      },
+      {
+        "limit": 100,
+        "cost": 150,
+        "decision": "hold",
+        "expected": "hold",
+        "asked": 0
+      },
+      {
+        "limit": 100,
+        "cost": 250,
+        "decision": "hold",
+        "expected": "hold",
+        "asked": 0
+      },
+      {
+        "limit": 100,
+        "cost": 350,
+        "decision": "hold",
+        "expected": "hold",
+        "asked": 0
+      },
+      {
+        "limit": 300,
+        "cost": 80,
+        "decision": "allow",
+        "expected": "allow",
+        "asked": 0
+      },
+      {
+        "limit": 300,
+        "cost": 150,
+        "decision": "allow",
+        "expected": "allow",
+        "asked": 0
+      },
+      {
+        "limit": 300,
+        "cost": 250,
+        "decision": "allow",
+        "expected": "allow",
+        "asked": 0
+      },
+      {
+        "limit": 300,
+        "cost": 350,
+        "decision": "hold",
+        "expected": "hold",
+        "asked": 0
+      }
+    ]
+  }
+}

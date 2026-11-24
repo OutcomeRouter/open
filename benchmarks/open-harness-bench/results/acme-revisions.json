@@ -1,0 +1,145 @@
+{
+  "snapshot": {
+    "counts": {
+      "cases": 72,
+      "unauthorized": 4,
+      "unnecessary_holds": 4,
+      "owner_rechecks": 0
+    },
+    "counterexamples": [
+      {
+        "edit": "tighten",
+        "order": "read edit handoff apply",
+        "cost": 101,
+        "expected": "hold",
+        "decision": "allow",
+        "owner_rechecks": 0
+      },
+      {
+        "edit": "tighten",
+        "order": "read edit handoff apply",
+        "cost": 200,
+        "expected": "hold",
+        "decision": "allow",
+        "owner_rechecks": 0
+      },
+      {
+        "edit": "tighten",
+        "order": "read handoff edit apply",
+        "cost": 101,
+        "expected": "hold",
+        "decision": "allow",
+        "owner_rechecks": 0
+      },
+      {
+        "edit": "tighten",
+        "order": "read handoff edit apply",
+        "cost": 200,
+        "expected": "hold",
+        "decision": "allow",
+        "owner_rechecks": 0
+      },
+      {
+        "edit": "loosen",
+        "order": "read edit handoff apply",
+        "cost": 201,
+        "expected": "allow",
+        "decision": "hold",
+        "owner_rechecks": 0
+      },
+      {
+        "edit": "loosen",
+        "order": "read edit handoff apply",
+        "cost": 300,
+        "expected": "allow",
+        "decision": "hold",
+        "owner_rechecks": 0
+      },
+      {
+        "edit": "loosen",
+        "order": "read handoff edit apply",
+        "cost": 201,
+        "expected": "allow",
+        "decision": "hold",
+        "owner_rechecks": 0
+      },
+      {
+        "edit": "loosen",
+        "order": "read handoff edit apply",
+        "cost": 300,
+        "expected": "allow",
+        "decision": "hold",
+        "owner_rechecks": 0
+      }
+    ]
+  },
+  "recheck_at_handoff": {
+    "counts": {
+      "cases": 72,
+      "unauthorized": 2,
+      "unnecessary_holds": 2,
+      "owner_rechecks": 0
+    },
+    "counterexamples": [
+      {
+        "edit": "tighten",
+        "order": "read handoff edit apply",
+        "cost": 101,
+        "expected": "hold",
+        "decision": "allow",
+        "owner_rechecks": 0
+      },
+      {
+        "edit": "tighten",
+        "order": "read handoff edit apply",
+        "cost": 200,
+        "expected": "hold",
+        "decision": "allow",
+        "owner_rechecks": 0
+      },
+      {
+        "edit": "loosen",
+        "order": "read handoff edit apply",
+        "cost": 201,
+        "expected": "allow",
+        "decision": "hold",
+        "owner_rechecks": 0
+      },
+      {
+        "edit": "loosen",
+        "order": "read handoff edit apply",
+        "cost": 300,
+        "expected": "allow",
+        "decision": "hold",
+        "owner_rechecks": 0
+      }
+    ]
+  },
+  "ask_on_edit": {
+    "counts": {
+      "cases": 72,
+      "unauthorized": 0,
+      "unnecessary_holds": 0,
+      "owner_rechecks": 36
+    },
+    "counterexamples": []
+  },
+  "current_chat": {
+    "counts": {
+      "cases": 72,
+      "unauthorized": 0,
+      "unnecessary_holds": 0,
+      "owner_rechecks": 0
+    },
+    "counterexamples": []
+  },
+  "current_rule": {
+    "counts": {
+      "cases": 72,
+      "unauthorized": 0,
+      "unnecessary_holds": 0,
+      "owner_rechecks": 0
+    },
+    "counterexamples": []
+  }
+}
