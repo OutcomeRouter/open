@@ -36,3 +36,8 @@ jobs:
         run: |
           .venv/bin/python tools/selection_ablation.py --out "$RUNNER_TEMP/selection.json"
           diff results/selection-ablation.json "$RUNNER_TEMP/selection.json"
+      - name: Reproduce AgentScope owner decisions
+        run: |
+          python -m pip install uv
+          uv run --python 3.12 experiments/acme/replay.py --out "$RUNNER_TEMP/acme-swarm.json"
+          diff results/acme-swarm.json "$RUNNER_TEMP/acme-swarm.json"

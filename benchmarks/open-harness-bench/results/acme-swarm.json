@@ -1,0 +1,586 @@
+[
+  {
+    "mode": "private",
+    "schedule": "serial",
+    "interruptions": 8,
+    "correct": 8,
+    "unauthorized": 0,
+    "events": [
+      {
+        "who": "Dana",
+        "wave": 1,
+        "request": "Can checkout keep an extra replica through Friday? $120.",
+        "decision": "allow",
+        "source": "asked Som",
+        "expected": "allow"
+      },
+      {
+        "who": "Tay",
+        "wave": 1,
+        "request": "Same checkout request from our queue, $120 through Friday.",
+        "decision": "allow",
+        "source": "asked Som",
+        "expected": "allow"
+      },
+      {
+        "who": "Mar",
+        "wave": 1,
+        "request": "Can checkout add the Friday replica for $120?",
+        "decision": "allow",
+        "source": "asked Som",
+        "expected": "allow"
+      },
+      {
+        "who": "Lee",
+        "wave": 2,
+        "request": "Checkout needs $200 of extra capacity through Friday.",
+        "decision": "allow",
+        "source": "asked Som",
+        "expected": "allow"
+      },
+      {
+        "who": "Jo",
+        "wave": 2,
+        "request": "Can checkout keep the $120 replica through Saturday?",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Ash",
+        "wave": 2,
+        "request": "Same Friday checkout change, but it will cost $201.",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Sam",
+        "wave": 2,
+        "request": "Could billing use $120 through Friday too?",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Rae",
+        "wave": 3,
+        "request": "Friday traffic is still up. Keep checkout warm until the queue clears?",
+        "decision": "request_cost",
+        "source": "asked Som",
+        "expected": "request_cost"
+      }
+    ]
+  },
+  {
+    "mode": "shared_chat",
+    "schedule": "serial",
+    "interruptions": 5,
+    "correct": 8,
+    "unauthorized": 0,
+    "events": [
+      {
+        "who": "Dana",
+        "wave": 1,
+        "request": "Can checkout keep an extra replica through Friday? $120.",
+        "decision": "allow",
+        "source": "asked Som",
+        "expected": "allow"
+      },
+      {
+        "who": "Tay",
+        "wave": 1,
+        "request": "Same checkout request from our queue, $120 through Friday.",
+        "decision": "allow",
+        "source": "reused",
+        "expected": "allow"
+      },
+      {
+        "who": "Mar",
+        "wave": 1,
+        "request": "Can checkout add the Friday replica for $120?",
+        "decision": "allow",
+        "source": "reused",
+        "expected": "allow"
+      },
+      {
+        "who": "Lee",
+        "wave": 2,
+        "request": "Checkout needs $200 of extra capacity through Friday.",
+        "decision": "allow",
+        "source": "reused",
+        "expected": "allow"
+      },
+      {
+        "who": "Jo",
+        "wave": 2,
+        "request": "Can checkout keep the $120 replica through Saturday?",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Ash",
+        "wave": 2,
+        "request": "Same Friday checkout change, but it will cost $201.",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Sam",
+        "wave": 2,
+        "request": "Could billing use $120 through Friday too?",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Rae",
+        "wave": 3,
+        "request": "Friday traffic is still up. Keep checkout warm until the queue clears?",
+        "decision": "request_cost",
+        "source": "asked Som",
+        "expected": "request_cost"
+      }
+    ]
+  },
+  {
+    "mode": "shared_rule",
+    "schedule": "serial",
+    "interruptions": 5,
+    "correct": 8,
+    "unauthorized": 0,
+    "events": [
+      {
+        "who": "Dana",
+        "wave": 1,
+        "request": "Can checkout keep an extra replica through Friday? $120.",
+        "decision": "allow",
+        "source": "asked Som",
+        "expected": "allow"
+      },
+      {
+        "who": "Tay",
+        "wave": 1,
+        "request": "Same checkout request from our queue, $120 through Friday.",
+        "decision": "allow",
+        "source": "reused",
+        "expected": "allow"
+      },
+      {
+        "who": "Mar",
+        "wave": 1,
+        "request": "Can checkout add the Friday replica for $120?",
+        "decision": "allow",
+        "source": "reused",
+        "expected": "allow"
+      },
+      {
+        "who": "Lee",
+        "wave": 2,
+        "request": "Checkout needs $200 of extra capacity through Friday.",
+        "decision": "allow",
+        "source": "reused",
+        "expected": "allow"
+      },
+      {
+        "who": "Jo",
+        "wave": 2,
+        "request": "Can checkout keep the $120 replica through Saturday?",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Ash",
+        "wave": 2,
+        "request": "Same Friday checkout change, but it will cost $201.",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Sam",
+        "wave": 2,
+        "request": "Could billing use $120 through Friday too?",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Rae",
+        "wave": 3,
+        "request": "Friday traffic is still up. Keep checkout warm until the queue clears?",
+        "decision": "request_cost",
+        "source": "asked Som",
+        "expected": "request_cost"
+      }
+    ]
+  },
+  {
+    "mode": "shared_rule_and_pending",
+    "schedule": "serial",
+    "interruptions": 5,
+    "correct": 8,
+    "unauthorized": 0,
+    "events": [
+      {
+        "who": "Dana",
+        "wave": 1,
+        "request": "Can checkout keep an extra replica through Friday? $120.",
+        "decision": "allow",
+        "source": "asked Som",
+        "expected": "allow"
+      },
+      {
+        "who": "Tay",
+        "wave": 1,
+        "request": "Same checkout request from our queue, $120 through Friday.",
+        "decision": "allow",
+        "source": "reused",
+        "expected": "allow"
+      },
+      {
+        "who": "Mar",
+        "wave": 1,
+        "request": "Can checkout add the Friday replica for $120?",
+        "decision": "allow",
+        "source": "reused",
+        "expected": "allow"
+      },
+      {
+        "who": "Lee",
+        "wave": 2,
+        "request": "Checkout needs $200 of extra capacity through Friday.",
+        "decision": "allow",
+        "source": "reused",
+        "expected": "allow"
+      },
+      {
+        "who": "Jo",
+        "wave": 2,
+        "request": "Can checkout keep the $120 replica through Saturday?",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Ash",
+        "wave": 2,
+        "request": "Same Friday checkout change, but it will cost $201.",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Sam",
+        "wave": 2,
+        "request": "Could billing use $120 through Friday too?",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Rae",
+        "wave": 3,
+        "request": "Friday traffic is still up. Keep checkout warm until the queue clears?",
+        "decision": "request_cost",
+        "source": "asked Som",
+        "expected": "request_cost"
+      }
+    ]
+  },
+  {
+    "mode": "private",
+    "schedule": "burst",
+    "interruptions": 8,
+    "correct": 8,
+    "unauthorized": 0,
+    "events": [
+      {
+        "who": "Dana",
+        "wave": 1,
+        "request": "Can checkout keep an extra replica through Friday? $120.",
+        "decision": "allow",
+        "source": "asked Som",
+        "expected": "allow"
+      },
+      {
+        "who": "Tay",
+        "wave": 1,
+        "request": "Same checkout request from our queue, $120 through Friday.",
+        "decision": "allow",
+        "source": "asked Som",
+        "expected": "allow"
+      },
+      {
+        "who": "Mar",
+        "wave": 1,
+        "request": "Can checkout add the Friday replica for $120?",
+        "decision": "allow",
+        "source": "asked Som",
+        "expected": "allow"
+      },
+      {
+        "who": "Lee",
+        "wave": 2,
+        "request": "Checkout needs $200 of extra capacity through Friday.",
+        "decision": "allow",
+        "source": "asked Som",
+        "expected": "allow"
+      },
+      {
+        "who": "Jo",
+        "wave": 2,
+        "request": "Can checkout keep the $120 replica through Saturday?",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Ash",
+        "wave": 2,
+        "request": "Same Friday checkout change, but it will cost $201.",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Sam",
+        "wave": 2,
+        "request": "Could billing use $120 through Friday too?",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Rae",
+        "wave": 3,
+        "request": "Friday traffic is still up. Keep checkout warm until the queue clears?",
+        "decision": "request_cost",
+        "source": "asked Som",
+        "expected": "request_cost"
+      }
+    ]
+  },
+  {
+    "mode": "shared_chat",
+    "schedule": "burst",
+    "interruptions": 7,
+    "correct": 8,
+    "unauthorized": 0,
+    "events": [
+      {
+        "who": "Dana",
+        "wave": 1,
+        "request": "Can checkout keep an extra replica through Friday? $120.",
+        "decision": "allow",
+        "source": "asked Som",
+        "expected": "allow"
+      },
+      {
+        "who": "Tay",
+        "wave": 1,
+        "request": "Same checkout request from our queue, $120 through Friday.",
+        "decision": "allow",
+        "source": "asked Som",
+        "expected": "allow"
+      },
+      {
+        "who": "Mar",
+        "wave": 1,
+        "request": "Can checkout add the Friday replica for $120?",
+        "decision": "allow",
+        "source": "asked Som",
+        "expected": "allow"
+      },
+      {
+        "who": "Lee",
+        "wave": 2,
+        "request": "Checkout needs $200 of extra capacity through Friday.",
+        "decision": "allow",
+        "source": "reused",
+        "expected": "allow"
+      },
+      {
+        "who": "Jo",
+        "wave": 2,
+        "request": "Can checkout keep the $120 replica through Saturday?",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Ash",
+        "wave": 2,
+        "request": "Same Friday checkout change, but it will cost $201.",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Sam",
+        "wave": 2,
+        "request": "Could billing use $120 through Friday too?",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Rae",
+        "wave": 3,
+        "request": "Friday traffic is still up. Keep checkout warm until the queue clears?",
+        "decision": "request_cost",
+        "source": "asked Som",
+        "expected": "request_cost"
+      }
+    ]
+  },
+  {
+    "mode": "shared_rule",
+    "schedule": "burst",
+    "interruptions": 7,
+    "correct": 8,
+    "unauthorized": 0,
+    "events": [
+      {
+        "who": "Dana",
+        "wave": 1,
+        "request": "Can checkout keep an extra replica through Friday? $120.",
+        "decision": "allow",
+        "source": "asked Som",
+        "expected": "allow"
+      },
+      {
+        "who": "Tay",
+        "wave": 1,
+        "request": "Same checkout request from our queue, $120 through Friday.",
+        "decision": "allow",
+        "source": "asked Som",
+        "expected": "allow"
+      },
+      {
+        "who": "Mar",
+        "wave": 1,
+        "request": "Can checkout add the Friday replica for $120?",
+        "decision": "allow",
+        "source": "asked Som",
+        "expected": "allow"
+      },
+      {
+        "who": "Lee",
+        "wave": 2,
+        "request": "Checkout needs $200 of extra capacity through Friday.",
+        "decision": "allow",
+        "source": "reused",
+        "expected": "allow"
+      },
+      {
+        "who": "Jo",
+        "wave": 2,
+        "request": "Can checkout keep the $120 replica through Saturday?",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Ash",
+        "wave": 2,
+        "request": "Same Friday checkout change, but it will cost $201.",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Sam",
+        "wave": 2,
+        "request": "Could billing use $120 through Friday too?",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Rae",
+        "wave": 3,
+        "request": "Friday traffic is still up. Keep checkout warm until the queue clears?",
+        "decision": "request_cost",
+        "source": "asked Som",
+        "expected": "request_cost"
+      }
+    ]
+  },
+  {
+    "mode": "shared_rule_and_pending",
+    "schedule": "burst",
+    "interruptions": 5,
+    "correct": 8,
+    "unauthorized": 0,
+    "events": [
+      {
+        "who": "Dana",
+        "wave": 1,
+        "request": "Can checkout keep an extra replica through Friday? $120.",
+        "decision": "allow",
+        "source": "asked Som",
+        "expected": "allow"
+      },
+      {
+        "who": "Tay",
+        "wave": 1,
+        "request": "Same checkout request from our queue, $120 through Friday.",
+        "decision": "allow",
+        "source": "joined pending request",
+        "expected": "allow"
+      },
+      {
+        "who": "Mar",
+        "wave": 1,
+        "request": "Can checkout add the Friday replica for $120?",
+        "decision": "allow",
+        "source": "joined pending request",
+        "expected": "allow"
+      },
+      {
+        "who": "Lee",
+        "wave": 2,
+        "request": "Checkout needs $200 of extra capacity through Friday.",
+        "decision": "allow",
+        "source": "reused",
+        "expected": "allow"
+      },
+      {
+        "who": "Jo",
+        "wave": 2,
+        "request": "Can checkout keep the $120 replica through Saturday?",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Ash",
+        "wave": 2,
+        "request": "Same Friday checkout change, but it will cost $201.",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Sam",
+        "wave": 2,
+        "request": "Could billing use $120 through Friday too?",
+        "decision": "hold",
+        "source": "asked Som",
+        "expected": "hold"
+      },
+      {
+        "who": "Rae",
+        "wave": 3,
+        "request": "Friday traffic is still up. Keep checkout warm until the queue clears?",
+        "decision": "request_cost",
+        "source": "asked Som",
+        "expected": "request_cost"
+      }
+    ]
+  }
+]

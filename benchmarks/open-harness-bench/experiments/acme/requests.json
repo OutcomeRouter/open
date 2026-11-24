@@ -1,0 +1,10 @@
+[
+  {"wave":1,"who":"Dana","text":"Can checkout keep an extra replica through Friday? $120.","service":"checkout","cost":120,"until":"2026-11-27","expected":"allow"},
+  {"wave":1,"who":"Tay","text":"Same checkout request from our queue, $120 through Friday.","service":"checkout","cost":120,"until":"2026-11-27","expected":"allow"},
+  {"wave":1,"who":"Mar","text":"Can checkout add the Friday replica for $120?","service":"checkout","cost":120,"until":"2026-11-27","expected":"allow"},
+  {"wave":2,"who":"Lee","text":"Checkout needs $200 of extra capacity through Friday.","service":"checkout","cost":200,"until":"2026-11-27","expected":"allow"},
+  {"wave":2,"who":"Jo","text":"Can checkout keep the $120 replica through Saturday?","service":"checkout","cost":120,"until":"2026-11-28","expected":"hold"},
+  {"wave":2,"who":"Ash","text":"Same Friday checkout change, but it will cost $201.","service":"checkout","cost":201,"until":"2026-11-27","expected":"hold"},
+  {"wave":2,"who":"Sam","text":"Could billing use $120 through Friday too?","service":"billing","cost":120,"until":"2026-11-27","expected":"hold"},
+  {"wave":3,"who":"Rae","text":"Friday traffic is still up. Keep checkout warm until the queue clears?","service":"checkout","cost":null,"until":null,"expected":"request_cost"}
+]
