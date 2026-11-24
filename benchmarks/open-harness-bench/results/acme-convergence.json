@@ -1,0 +1,280 @@
+{
+  "probe_costs": [
+    99,
+    100,
+    101,
+    199,
+    200,
+    201,
+    299,
+    300,
+    301
+  ],
+  "live_requests_per_revision": 4,
+  "modes": {
+    "search_older": [
+      {
+        "limit": 100,
+        "live_questions": 0,
+        "stable_from_request_count": null,
+        "checkpoints": [
+          {
+            "requests_seen": 0,
+            "mismatches": 3,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 1,
+            "mismatches": 3,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 2,
+            "mismatches": 3,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 3,
+            "mismatches": 3,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 4,
+            "mismatches": 3,
+            "questions_on_probes": 0
+          }
+        ]
+      },
+      {
+        "limit": 300,
+        "live_questions": 0,
+        "stable_from_request_count": null,
+        "checkpoints": [
+          {
+            "requests_seen": 0,
+            "mismatches": 3,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 1,
+            "mismatches": 3,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 2,
+            "mismatches": 3,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 3,
+            "mismatches": 3,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 4,
+            "mismatches": 3,
+            "questions_on_probes": 0
+          }
+        ]
+      }
+    ],
+    "ask_per_request": [
+      {
+        "limit": 100,
+        "live_questions": 4,
+        "stable_from_request_count": null,
+        "checkpoints": [
+          {
+            "requests_seen": 0,
+            "mismatches": 0,
+            "questions_on_probes": 9
+          },
+          {
+            "requests_seen": 1,
+            "mismatches": 0,
+            "questions_on_probes": 9
+          },
+          {
+            "requests_seen": 2,
+            "mismatches": 0,
+            "questions_on_probes": 9
+          },
+          {
+            "requests_seen": 3,
+            "mismatches": 0,
+            "questions_on_probes": 9
+          },
+          {
+            "requests_seen": 4,
+            "mismatches": 0,
+            "questions_on_probes": 9
+          }
+        ]
+      },
+      {
+        "limit": 300,
+        "live_questions": 4,
+        "stable_from_request_count": null,
+        "checkpoints": [
+          {
+            "requests_seen": 0,
+            "mismatches": 0,
+            "questions_on_probes": 9
+          },
+          {
+            "requests_seen": 1,
+            "mismatches": 0,
+            "questions_on_probes": 9
+          },
+          {
+            "requests_seen": 2,
+            "mismatches": 0,
+            "questions_on_probes": 9
+          },
+          {
+            "requests_seen": 3,
+            "mismatches": 0,
+            "questions_on_probes": 9
+          },
+          {
+            "requests_seen": 4,
+            "mismatches": 0,
+            "questions_on_probes": 9
+          }
+        ]
+      }
+    ],
+    "clarify_revision": [
+      {
+        "limit": 100,
+        "live_questions": 1,
+        "stable_from_request_count": 1,
+        "checkpoints": [
+          {
+            "requests_seen": 0,
+            "mismatches": 0,
+            "questions_on_probes": 9
+          },
+          {
+            "requests_seen": 1,
+            "mismatches": 0,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 2,
+            "mismatches": 0,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 3,
+            "mismatches": 0,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 4,
+            "mismatches": 0,
+            "questions_on_probes": 0
+          }
+        ]
+      },
+      {
+        "limit": 300,
+        "live_questions": 1,
+        "stable_from_request_count": 1,
+        "checkpoints": [
+          {
+            "requests_seen": 0,
+            "mismatches": 0,
+            "questions_on_probes": 9
+          },
+          {
+            "requests_seen": 1,
+            "mismatches": 0,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 2,
+            "mismatches": 0,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 3,
+            "mismatches": 0,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 4,
+            "mismatches": 0,
+            "questions_on_probes": 0
+          }
+        ]
+      }
+    ],
+    "structured": [
+      {
+        "limit": 100,
+        "live_questions": 0,
+        "stable_from_request_count": 0,
+        "checkpoints": [
+          {
+            "requests_seen": 0,
+            "mismatches": 0,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 1,
+            "mismatches": 0,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 2,
+            "mismatches": 0,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 3,
+            "mismatches": 0,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 4,
+            "mismatches": 0,
+            "questions_on_probes": 0
+          }
+        ]
+      },
+      {
+        "limit": 300,
+        "live_questions": 0,
+        "stable_from_request_count": 0,
+        "checkpoints": [
+          {
+            "requests_seen": 0,
+            "mismatches": 0,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 1,
+            "mismatches": 0,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 2,
+            "mismatches": 0,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 3,
+            "mismatches": 0,
+            "questions_on_probes": 0
+          },
+          {
+            "requests_seen": 4,
+            "mismatches": 0,
+            "questions_on_probes": 0
+          }
+        ]
+      }
+    ]
+  }
+}
